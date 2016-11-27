@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>gitignore文件失效原因 | coolrc&#39;s blog</title>
+  <meta name="theme-color" content="#2a2a2a">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content=".gitignore 文件的用途项目中经常会生成一些Git系统不需要追踪(track)的文件。典型的是在编译生成过程中 产生的文件或是编程器生成的临时备份文件。当然，你不追踪(track)这些文件，可以 平时不用”git add”去把它们加到索引中。 但是这样会很快变成一件烦人的事，你发现 项目中到处有未追踪(untracked)的文件; 这样也使”git add .” 和”git commit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitignore文件失效原因">
+<meta property="og:url" content="https://coolrc.top/2015/12/28/28234118/index.html">
+<meta property="og:site_name" content="coolrc's blog">
+<meta property="og:description" content=".gitignore 文件的用途项目中经常会生成一些Git系统不需要追踪(track)的文件。典型的是在编译生成过程中 产生的文件或是编程器生成的临时备份文件。当然，你不追踪(track)这些文件，可以 平时不用”git add”去把它们加到索引中。 但是这样会很快变成一件烦人的事，你发现 项目中到处有未追踪(untracked)的文件; 这样也使”git add .” 和”git commit">
+<meta property="og:updated_time" content="2015-12-28T23:41:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gitignore文件失效原因">
+<meta name="twitter:description" content=".gitignore 文件的用途项目中经常会生成一些Git系统不需要追踪(track)的文件。典型的是在编译生成过程中 产生的文件或是编程器生成的临时备份文件。当然，你不追踪(track)这些文件，可以 平时不用”git add”去把它们加到索引中。 但是这样会很快变成一件烦人的事，你发现 项目中到处有未追踪(untracked)的文件; 这样也使”git add .” 和”git commit">
+  
+    <link rel="alternative" href="/atom.xml" title="coolrc&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="/highlight/prettify.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71864657-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-gitignore文件失效原因" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gitignore文件失效原因
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/12/28/28234118/" class="article-date">
+  <time datetime="2015-12-28T23:41:18.000Z" itemprop="datePublished">2015-12-28</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="gitignore-文件的用途"><a href="#gitignore-文件的用途" class="headerlink" title=".gitignore 文件的用途"></a>.gitignore 文件的用途</h3><p>项目中经常会生成一些Git系统不需要追踪(track)的文件。典型的是在编译生成过程中 产生的文件或是编程器生成的临时备份文件。当然，你不追踪(track)这些文件，可以 平时不用”git add”去把它们加到索引中。 但是这样会很快变成一件烦人的事，你发现 项目中到处有未追踪(untracked)的文件; 这样也使”git add .” 和”git commit -a” 变得实际上没有用处，同时”git status”命令的输出也会有它们。<br><a id="more"></a><br>你可以在你的顶层工作目录中添加一个叫”.gitignore”的文件，来告诉Git系统要忽略 掉哪些文件。</p>
+<h3 id="为何失效"><a href="#为何失效" class="headerlink" title="为何失效"></a>为何失效</h3><p>比如在一个本地仓库中，产生了诸多的日志记录，而这些记录都是本地操作产生的，我们不必将其提交到远程仓库中，那么我们在.gitignore中添加了logs/20150514.log的过滤规则，但是在使用git status的时候，还是可以看到modified:logs/20150514.log，说明规则没有起作用。</p>
+<p>为什么增加了.gitignore里的规则却没有效果呢？<br>这是因为.gitignore文件只能作用于Untracked Files，也就是那些从来没有被Git记录过的文件（自添加以后，从未add及commit过的文件）。</p>
+<p>之所以规则不生效，是因为那些.log文件曾经被Git记录过，因此.gitignore对它们完全无效。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>1.从Git的数据库中删除对于该文件的追踪；<br>例如我要取消 <code>20150514.log</code>的追踪，执行</p>
+<pre><code>rm —cached logs/20150514.log
+</code></pre><p>2.把对应的规则写入<code>.gitignore</code>，让忽略真正生效；</p>
+<p>3.提交+推送</p>
+<p>只有这样做，所有的团队成员才会保持一致而不会有后遗症，也只有这样做，其他的团队成员根本不需要做额外的工作来维持对一个文件的改变忽略。<br>最后有一点需要注意的，<code>git rm —cached logs/20150514.log</code> 删除的是追踪状态，而不是物理文件；如果你真的是彻底不想要了，你也可以直接 rm＋忽略＋提交。</p>
+<hr>
+<p>参考资料:</p>
+<p><a href="http://gitbook.liuhui998.com/4_1.html" target="_blank" rel="external">Git Community Book 中文版</a></p>
+<p><a href="http://codepub.cn/2015/05/14/Git-filtering-method-of-uploaded-files/" target="_blank" rel="external">http://codepub.cn/2015/05/14/Git-filtering-method-of-uploaded-files/</a></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    <div class="article-date">
+    <p><span>最后更新于:2015年12月28日 - 23时41分</span></p>
+</div><br/>
+
+<nav id="article-nav">
+  
+    <a href="/2016/02/02/02150921/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          美化多说评论框
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/13/13121246/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">去除vim自动生成的un~文件</div>
+    </a>
+  
+</nav>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2015/12/28/28234118/" data-title="gitignore文件失效原因" data-url="https://coolrc.top/2015/12/28/28234118/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coolrc"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = "/js/embed.js";
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+  
+</article>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/" title="首页"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives" title="归档"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags" title="标签云"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  		
+			<li><a href="/friends" title="友链"><i class="icon icon-friends"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2016 coolrc 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/Alex-fun/hexo-theme-jane/" target="_blank">Jane</a>
+
+
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >
+                            本站到访量<span id="busuanzi_value_site_uv"></span>次
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">
+                            本页阅读量<span id="busuanzi_value_page_pv"></span>次
+                        </span>
+                    </span>
+                
+            </div>
+        
+	</div>
+
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/" class="mobile-nav-link">Github</a>
+  
+    <a href="/friends" class="mobile-nav-link">friends</a>
+  
+</nav>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--prettify-->
+
+<script src="//cdn.bootcss.com/prettify/r224/prettify.min.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+ prettyPrint();
+})
+</script>
+
+
+<script src="//cdn.bootcss.com/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

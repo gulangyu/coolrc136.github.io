@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windows10自动激活失败0xC004F210 0xC004E002 | coolrc&#39;s blog</title>
+  <meta name="theme-color" content="#2a2a2a">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。
+但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows10自动激活失败0xC004F210 0xC004E002">
+<meta property="og:url" content="https://coolrc.top/2015/11/29/29110813/index.html">
+<meta property="og:site_name" content="coolrc's blog">
+<meta property="og:description" content="在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。
+但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。">
+<meta property="og:image" content="https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg">
+<meta property="og:updated_time" content="2015-11-29T11:08:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows10自动激活失败0xC004F210 0xC004E002">
+<meta name="twitter:description" content="在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。
+但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。">
+<meta name="twitter:image" content="https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="coolrc&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="/highlight/prettify.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71864657-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-windows10自动激活失败" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows10自动激活失败0xC004F210 0xC004E002
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/11/29/29110813/" class="article-date">
+  <time datetime="2015-11-29T11:08:13.000Z" itemprop="datePublished">2015-11-29</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/win/">windows</a>
+  </div>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg" alt=""></p>
+<p>在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。</p>
+<p>但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。<br><a id="more"></a><br>于是果断重启大法，然并卵。还是激活失败。。。。</p>
+<p>在google上搜索好久，尝试了很多方法，最后终于被我找到一个办法了，如下：</p>
+<hr>
+<p>  如果你激活失败的话，可以在开始按键上右键，选择    命令提示符（管理员）<br>  依次执行以下代码</p>
+<pre><code class="bash">net stop sppsvc
+cd %windir%\ServiceProfile\LocalService\AppData\Local\Microsoft\WSLicense
+ren tokens.dat tokens.bar
+net start sppsvc
+cscript.exe %windir%\system32\slmgr.vbs /rilc
+</code></pre>
+<p>  完成后重启计算机，你就可以在设置里看到你的计算机已经激活了</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    <div class="article-date">
+    <p><span>最后更新于:2015年11月29日 - 11时08分</span></p>
+</div><br/>
+
+<nav id="article-nav">
+  
+    <a href="/2015/12/04/04231804/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          archlinux安装教程及美化教程
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2015/11/29/29110813/" data-title="windows10自动激活失败0xC004F210 0xC004E002" data-url="https://coolrc.top/2015/11/29/29110813/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coolrc"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = "/js/embed.js";
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+  
+</article>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/" title="首页"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives" title="归档"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags" title="标签云"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  		
+			<li><a href="/friends" title="友链"><i class="icon icon-friends"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2016 coolrc 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/Alex-fun/hexo-theme-jane/" target="_blank">Jane</a>
+
+
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >
+                            本站到访量<span id="busuanzi_value_site_uv"></span>次
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">
+                            本页阅读量<span id="busuanzi_value_page_pv"></span>次
+                        </span>
+                    </span>
+                
+            </div>
+        
+	</div>
+
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/" class="mobile-nav-link">Github</a>
+  
+    <a href="/friends" class="mobile-nav-link">friends</a>
+  
+</nav>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--prettify-->
+
+<script src="//cdn.bootcss.com/prettify/r224/prettify.min.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+ prettyPrint();
+})
+</script>
+
+
+<script src="//cdn.bootcss.com/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

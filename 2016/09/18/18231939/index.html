@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>校园网使用ipv6的SS免流 | coolrc&#39;s blog</title>
+  <meta name="theme-color" content="#2a2a2a">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很多高校校园网ipv4都是限制流量的，像我们学校苦逼的校园网ipv4只有15G流量，根本没法下载东西啊，但是ipv6不计流量。利用这一点，可以通过ipv6连接SS走代理，这样校园网会识别你的流量都是走的ipv6，就不计流量了。只要对普通的SS配置文件稍作修改就可以愉快的免流啦。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="校园网使用ipv6的SS免流">
+<meta property="og:url" content="https://coolrc.top/2016/09/18/18231939/index.html">
+<meta property="og:site_name" content="coolrc's blog">
+<meta property="og:description" content="很多高校校园网ipv4都是限制流量的，像我们学校苦逼的校园网ipv4只有15G流量，根本没法下载东西啊，但是ipv6不计流量。利用这一点，可以通过ipv6连接SS走代理，这样校园网会识别你的流量都是走的ipv6，就不计流量了。只要对普通的SS配置文件稍作修改就可以愉快的免流啦。">
+<meta property="og:updated_time" content="2016-10-12T17:17:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="校园网使用ipv6的SS免流">
+<meta name="twitter:description" content="很多高校校园网ipv4都是限制流量的，像我们学校苦逼的校园网ipv4只有15G流量，根本没法下载东西啊，但是ipv6不计流量。利用这一点，可以通过ipv6连接SS走代理，这样校园网会识别你的流量都是走的ipv6，就不计流量了。只要对普通的SS配置文件稍作修改就可以愉快的免流啦。">
+  
+    <link rel="alternative" href="/atom.xml" title="coolrc&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="/highlight/prettify.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71864657-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-校园网使用ipv6的SS免流" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      校园网使用ipv6的SS免流
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/09/18/18231939/" class="article-date">
+  <time datetime="2016-09-18T23:19:39.000Z" itemprop="datePublished">2016-09-18</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多高校校园网ipv4都是限制流量的，像我们学校苦逼的校园网ipv4只有15G流量，根本没法下载东西啊，但是ipv6不计流量。利用这一点，可以通过ipv6连接SS走代理，这样校园网会识别你的流量都是走的ipv6，就不计流量了。只要对普通的SS配置文件稍作修改就可以愉快的免流啦。<a id="more"></a></p>
+<p>其实很简单，通常SS配置文件是这样的</p>
+<pre><code>{
+    &quot;server&quot;:&quot;my_server_ip&quot;,
+    &quot;server_port&quot;:8388,
+    &quot;local_address&quot;: &quot;127.0.0.1&quot;,
+    &quot;local_port&quot;:1080,
+    &quot;password&quot;:&quot;mypassword&quot;,
+    &quot;timeout&quot;:300,
+    &quot;method&quot;:&quot;aes-256-cfb&quot;,
+    &quot;fast_open&quot;: false
+}
+</code></pre><p>我们要做的事就是修改server一行的ip，将server行改成这样就行了:</p>
+<pre><code>&quot;server&quot;:&quot;::&quot;,
+</code></pre><p>然后在SS的客户端将原来的ipv4地址改为ipv6地址即可，要查看服务器ipv6地址，你可以去主机商的控制台查看，有的控制台不显示ipv6地址的，可以通过<code>ip addr</code>或者<code>ifconfig</code>命令查看。</p>
+<h4 id="更新："><a href="#更新：" class="headerlink" title="更新："></a>更新：</h4><p>在 shadowsocks-libev 中这样只能让ss监听ipv6，要同时监听ipv4和ipv6，应该这样</p>
+<pre><code>&quot;server&quot;:[&quot;[::0]&quot;, &quot;0.0.0.0&quot;],
+</code></pre><p>至于 shadowsocks-libev 为何要这样，你可以参考这篇文章 <a href="https://linux.cn/article-7823-1.html" target="_blank" rel="external">https://linux.cn/article-7823-1.html</a></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    <div class="article-date">
+    <p><span>最后更新于:2016年10月12日 - 17时17分</span></p>
+</div><br/>
+
+<nav id="article-nav">
+  
+    <a href="/2016/10/12/1012180646/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          当我有 6 百万时，就发布 Linux 5.0
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/03/844120/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在ssh上使用google二次验证</div>
+    </a>
+  
+</nav>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/09/18/18231939/" data-title="校园网使用ipv6的SS免流" data-url="https://coolrc.top/2016/09/18/18231939/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coolrc"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = "/js/embed.js";
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+  
+</article>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/" title="首页"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives" title="归档"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags" title="标签云"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  		
+			<li><a href="/friends" title="友链"><i class="icon icon-friends"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2016 coolrc 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/Alex-fun/hexo-theme-jane/" target="_blank">Jane</a>
+
+
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >
+                            本站到访量<span id="busuanzi_value_site_uv"></span>次
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">
+                            本页阅读量<span id="busuanzi_value_page_pv"></span>次
+                        </span>
+                    </span>
+                
+            </div>
+        
+	</div>
+
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/" class="mobile-nav-link">Github</a>
+  
+    <a href="/friends" class="mobile-nav-link">friends</a>
+  
+</nav>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--prettify-->
+
+<script src="//cdn.bootcss.com/prettify/r224/prettify.min.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+ prettyPrint();
+})
+</script>
+
+
+<script src="//cdn.bootcss.com/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在ssh上使用google二次验证 | coolrc&#39;s blog</title>
+  <meta name="theme-color" content="#2a2a2a">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="vps 使用密码登陆的话，可能会遭到暴力破解。使用 google 的验证器可以在手机上生成动态验证码，即便对方得到密码也无法登陆。这篇文章介绍如何在 centos7 上启用 google 二次验证。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在ssh上使用google二次验证">
+<meta property="og:url" content="https://coolrc.top/2016/08/03/844120/index.html">
+<meta property="og:site_name" content="coolrc's blog">
+<meta property="og:description" content="vps 使用密码登陆的话，可能会遭到暴力破解。使用 google 的验证器可以在手机上生成动态验证码，即便对方得到密码也无法登陆。这篇文章介绍如何在 centos7 上启用 google 二次验证。">
+<meta property="og:updated_time" content="2016-08-03T16:05:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在ssh上使用google二次验证">
+<meta name="twitter:description" content="vps 使用密码登陆的话，可能会遭到暴力破解。使用 google 的验证器可以在手机上生成动态验证码，即便对方得到密码也无法登陆。这篇文章介绍如何在 centos7 上启用 google 二次验证。">
+  
+    <link rel="alternative" href="/atom.xml" title="coolrc&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="/highlight/prettify.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71864657-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-在ssh上使用google二次验证" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在ssh上使用google二次验证
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/08/03/844120/" class="article-date">
+  <time datetime="2016-08-03T16:05:30.000Z" itemprop="datePublished">2016-08-03</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vps 使用密码登陆的话，可能会遭到暴力破解。使用 google 的验证器可以在手机上生成动态验证码，即便对方得到密码也无法登陆。这篇文章介绍如何在 centos7 上启用 google 二次验证。<a id="more"></a></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>首先要开启epel源，然后安装下列软件</p>
+<pre><code class="sh">yum install gcc make pam-devel libpng-devel libtool wget git qrencode
+</code></pre>
+<h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><pre><code class="sh">git clone https://github.com/google/google-authenticator
+cd google-authenticator/libpam
+./bootstrap.#!/bin/sh
+./configure
+make
+sudo make install
+sudo cp .libs/pam_google_authenticator.so /lib64/security/
+</code></pre>
+<h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>编辑 <code>/etc/pam.d/sshd</code> ，在第一行添加</p>
+<pre><code>auth required pam_google_authenticator.so
+</code></pre><p>然后编辑<code>/etc/ssh/sshd_config</code>，将<code>ChallengeResponseAuthentication</code>的值改为yes</p>
+<p>然后执行<code>systemctl restart sshd</code>重启ssh</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>切换到对应的用户，执行 <code>google-authenticator</code> ,然后程序会问你一些问题，并给出一个二维码，秘钥，还有几个应急码以供手机丢失时使用。这里一路选是即可。</p>
+<blockquote>
+<p>注意：每个应急码只能使用一次</p>
+</blockquote>
+<p>二维码使用<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=zh_CN" target="_blank" rel="external"> google 身份验证器</a>软件扫描即可。扫描成功后app界面就能显示你的验证码了。由于验证码是基于时间戳的，确保你的设备时间准确。验证器允许4分钟以内的时间误差。</p>
+<p>完成上述步骤先不要急着退出，新开一个 ssh 测试一下能否登陆，以防出现问题导致无法登陆，我这里就因为没配置好而无法登陆了，一怒之下 rebuild 。</p>
+<p>以后再登陆时，系统先会提示你输入验证码，然后才会让你输入密码。如果你手机不在身边，你也可以用应急码登陆。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    <div class="article-date">
+    <p><span>最后更新于:2016年08月03日 - 16时05分</span></p>
+</div><br/>
+
+<nav id="article-nav">
+  
+    <a href="/2016/09/18/18231939/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          校园网使用ipv6的SS免流
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/23/23131543/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">小米路由mini破解ssh并刷入breed</div>
+    </a>
+  
+</nav>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/08/03/844120/" data-title="在ssh上使用google二次验证" data-url="https://coolrc.top/2016/08/03/844120/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coolrc"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = "/js/embed.js";
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+  
+</article>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/" title="首页"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives" title="归档"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags" title="标签云"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  		
+			<li><a href="/friends" title="友链"><i class="icon icon-friends"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2016 coolrc 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/Alex-fun/hexo-theme-jane/" target="_blank">Jane</a>
+
+
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >
+                            本站到访量<span id="busuanzi_value_site_uv"></span>次
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">
+                            本页阅读量<span id="busuanzi_value_page_pv"></span>次
+                        </span>
+                    </span>
+                
+            </div>
+        
+	</div>
+
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/" class="mobile-nav-link">Github</a>
+  
+    <a href="/friends" class="mobile-nav-link">friends</a>
+  
+</nav>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--prettify-->
+
+<script src="//cdn.bootcss.com/prettify/r224/prettify.min.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+ prettyPrint();
+})
+</script>
+
+
+<script src="//cdn.bootcss.com/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>美化多说评论框 | coolrc&#39;s blog</title>
+  <meta name="theme-color" content="#2a2a2a">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天给多说换上了新的评论框样式，分享一下我的评论框css代码,将代码粘贴到多说设置-基本设置-自定义css里即可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="美化多说评论框">
+<meta property="og:url" content="https://coolrc.top/2016/02/02/02150921/index.html">
+<meta property="og:site_name" content="coolrc's blog">
+<meta property="og:description" content="昨天给多说换上了新的评论框样式，分享一下我的评论框css代码,将代码粘贴到多说设置-基本设置-自定义css里即可">
+<meta property="og:image" content="https://c1.staticflickr.com/9/8741/27870864153_b62912877b_b.jpg">
+<meta property="og:updated_time" content="2016-04-02T15:09:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="美化多说评论框">
+<meta name="twitter:description" content="昨天给多说换上了新的评论框样式，分享一下我的评论框css代码,将代码粘贴到多说设置-基本设置-自定义css里即可">
+<meta name="twitter:image" content="https://c1.staticflickr.com/9/8741/27870864153_b62912877b_b.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="coolrc&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="/highlight/prettify.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71864657-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-美化多说评论框" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      美化多说评论框
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/02/02/02150921/" class="article-date">
+  <time datetime="2016-02-02T15:09:21.000Z" itemprop="datePublished">2016-02-02</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://c1.staticflickr.com/9/8741/27870864153_b62912877b_b.jpg" alt=""></p>
+<p>昨天给多说换上了新的评论框样式，分享一下我的评论框css代码,将代码粘贴到多说<code>设置-基本设置-自定义css里即可</code><br><a id="more"></a></p>
+<pre><code class="css">/*head Start*/
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current {
+    border: 0px;
+    color: #6D6D6B;
+    text-shadow: none;
+    background: #F3F3F3;
+}
+
+#ds-thread #ds-reset .ds-highlight {
+    font-family: Microsoft YaHei, &quot;Helvetica Neue&quot;, Helvetica, Arial, Sans-serif;/*评论字体*/
+    font-size: 100%;
+    color: #6D6D6B !important;
+}
+
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current:hover {
+    color: #696a52;
+    background: #F2F2F2;
+}
+
+#ds-thread #ds-reset a.ds-highlight:hover {
+    color: #696a52 !important;
+}
+
+#ds-thread {
+    padding-left: 15px;
+}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset #ds-hot-posts {
+    overflow: visible;
+}
+
+#ds-thread #ds-reset .ds-post-self {
+    padding: 10px 0 10px 10px;
+}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset .ds-post-self {
+    border: 0 !important;
+}
+
+#ds-reset .ds-avatar, #ds-thread #ds-reset ul.ds-children .ds-avatar {
+    top: 15px;
+    left: -20px;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+    box-shadow: -1px 0 1px rgba(0,0,0,0.15) inset;
+    border-radius: 46px;
+    background: #F6F8FA;/*头像旁边圆圈颜色*/
+}
+
+#ds-thread .ds-avatar a {
+    display: inline-block;
+    padding: 1px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b9baa6;
+    border-radius: 50%;
+    background-color: #fff !important;
+}
+
+#ds-thread .ds-avatar a:hover {
+}
+
+#ds-thread .ds-avatar &gt; img {
+    margin: 2px 0 0 2px;
+}
+
+#ds-thread #ds-reset .ds-replybox {
+    box-shadow: none;
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-replybox.ds-inline-replybox a.ds-avatar,
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar {
+    left: 0;
+    top: 0;
+    padding: 0;
+    width: 32px !important;
+    height: 32px !important;
+    background: none;
+    box-shadow: none;
+}
+
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
+}
+
+#ds-reset .ds-replybox a.ds-avatar,
+#ds-reset .ds-replybox .ds-avatar img {
+    padding: 0;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 5px;
+}
+
+#ds-reset .ds-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+    -webkit-transition: .8s all ease-in-out;
+    -moz-transition: .4s all ease-in-out;
+    -o-transition: .4s all ease-in-out;
+    -ms-transition: .4s all ease-in-out;
+    transition: .4s all ease-in-out;
+}
+
+.ds-post-self:hover .ds-avatar img {
+    -webkit-transform: rotateX(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+#ds-thread #ds-reset .ds-comment-body {
+    -webkit-transition-delay: initial;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: initial;
+/*    background: #FFFFFF;评论背景色，我这里没有设置，如果想要要设置取消注释即可*/
+    padding: 15px 15px 15px 47px;
+    border-radius: 5px;
+    box-shadow: #B8B9B9 0 1px 3px;
+    border: white 1px solid;
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-comment-body {
+    padding-left: 15px;
+}
+
+#ds-thread #ds-reset .ds-comment-body p {
+    color: #787968;
+}
+
+#ds-thread #ds-reset .ds-comments {
+    border-bottom: 0px;
+}
+
+#ds-thread #ds-reset .ds-powered-by {
+    display: none;
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name {
+    font-weight: normal;
+    color: #3D3D3D !important;
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name:hover {
+    color: #D32 !important;
+}
+
+#ds-thread #ds-reset #ds-bubble {
+    display: none !important;
+}
+
+#ds-thread #ds-reset #ds-hot-posts {
+    border: 0;
+}
+
+#ds-reset #ds-hot-posts .ds-gradient-bg {
+    background: none;
+}
+
+#ds-thread #ds-reset .ds-comment-body:hover {
+    background-color: #F1F1F1;
+    -webkit-transition-delay: initial;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: initial;
+}
+/*Head End*/
+</code></pre>
+<p>代码里重要内容我加了注释，你可以自行修改，其他设置可以参考<a href="http://shenchaofei.cn/duoshuo-comment-box-css-custom/328.html" target="_blank" rel="external">http://shenchaofei.cn/duoshuo-comment-box-css-custom/328.html</a></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    <div class="article-date">
+    <p><span>最后更新于:2016年04月02日 - 15时09分</span></p>
+</div><br/>
+
+<nav id="article-nav">
+  
+    <a href="/2016/05/30/30131656/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          博客大变样
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/28/28234118/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">gitignore文件失效原因</div>
+    </a>
+  
+</nav>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/02/02/02150921/" data-title="美化多说评论框" data-url="https://coolrc.top/2016/02/02/02150921/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coolrc"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = "/js/embed.js";
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+  
+</article>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/" title="首页"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives" title="归档"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags" title="标签云"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  		
+			<li><a href="/friends" title="友链"><i class="icon icon-friends"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2016 coolrc 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/Alex-fun/hexo-theme-jane/" target="_blank">Jane</a>
+
+
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >
+                            本站到访量<span id="busuanzi_value_site_uv"></span>次
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">
+                            本页阅读量<span id="busuanzi_value_page_pv"></span>次
+                        </span>
+                    </span>
+                
+            </div>
+        
+	</div>
+
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/" class="mobile-nav-link">Github</a>
+  
+    <a href="/friends" class="mobile-nav-link">friends</a>
+  
+</nav>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--prettify-->
+
+<script src="//cdn.bootcss.com/prettify/r224/prettify.min.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+ prettyPrint();
+})
+</script>
+
+
+<script src="//cdn.bootcss.com/smoothscroll/1.4.4/SmoothScroll.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
