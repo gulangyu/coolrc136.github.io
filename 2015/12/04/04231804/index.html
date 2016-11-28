@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://farm9.staticflickr.com/8443/28408171781_505273ce85_o_d.jpg">
 <meta property="og:image" content="https://farm9.staticflickr.com/8697/28454263056_8471aaf14e_o_d.jpg">
 <meta property="og:image" content="https://farm9.staticflickr.com/8682/28454262536_a96823a150_h_d.jpg">
-<meta property="og:updated_time" content="2016-09-18T23:08:16.000Z">
+<meta property="og:updated_time" content="2016-11-28T03:37:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="archlinux安装教程及美化教程">
 <meta name="twitter:description" content="此文章记录我安装arch的过程，安装环境为uefi+gpt，桌面使用gnome3，输入法使用了gnome默认的ibus
@@ -72,7 +72,7 @@
     
     <div class="article-meta">
       <a href="/2015/12/04/04231804/" class="article-date">
-  <time datetime="2015-12-04T23:18:04.000Z" itemprop="datePublished">2015-12-04</time>
+  <time datetime="2015-12-04T15:18:04.000Z" itemprop="datePublished">2015-12-04</time>
 </a>
       
   <div class="article-category">
@@ -161,11 +161,15 @@ options        root=/dev/sdxy rw
 timeout  30
 </code></pre><p>完成后输入</p>
 <pre><code>bootctl update
-</code></pre><h4 id="grub引导"><a href="#grub引导" class="headerlink" title="grub引导"></a>grub引导</h4><pre><code>#BIOS+MBR
+</code></pre><h4 id="grub引导"><a href="#grub引导" class="headerlink" title="grub引导"></a>grub引导</h4><pre><code>pacman -S grub os-prober efibootmgr ntfs-3g
+#BIOS+MBR
 grub-install --recheck /dev/sdX
 #UEFI+GPT
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
-</code></pre><h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><p>设置个您喜欢的主机名，这里以myhostname代替：</p>
+</code></pre><p>然后执行</p>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><p>chroot下执行上述命令并不会添加windows引导，你需要在下次重启到arch后再次执行上述命令。</p>
+<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><p>设置个您喜欢的主机名，这里以myhostname代替：</p>
 <pre><code>echo myhostname &gt; /etc/hostname
 </code></pre><p>并在 /etc/hosts 添加同样的主机名：</p>
 <pre><code>#&lt;ip-address&gt;    &lt;hostname.domain.org&gt;    &lt;hostname&gt;
@@ -204,6 +208,8 @@ pacman -S plasma-desktop
 <pre><code>pacman -S sddm
 </code></pre><p>将SDDM设置为开机自启动</p>
 <pre><code>systemctl enable sddm
+</code></pre><p>安装中文包</p>
+<pre><code>pacman -S  kde-l10n-zh_cn
 </code></pre><h3 id="startx-启动图形界面"><a href="#startx-启动图形界面" class="headerlink" title="startx 启动图形界面"></a>startx 启动图形界面</h3><p>如果你不想开机自动进入桌面，可以使用startx启动桌面，如果要使用startx，就不用安装登录管理器。</p>
 <pre><code>pacman -S xorg-xinit
 </code></pre><p>对你的startx配置文件进行设置</p>
@@ -231,7 +237,11 @@ exec xterm -geometry 80x66+0+0 -name login
 <h3 id="中文字体"><a href="#中文字体" class="headerlink" title="中文字体"></a>中文字体</h3><p>你需要中文字体才能使用gnome-terminal</p>
 <pre><code>pacman -S wqy-microhei
 </code></pre><p>现在你已经可以使用你的系统了，输入<code>reboot</code>重启后系统即可自动进入gdm界面，然后进入桌面</p>
-<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="yaourt"><a href="#yaourt" class="headerlink" title="yaourt"></a>yaourt</h3><p>Yaourt是archlinux方便使用的关键部件之一，但没有被整合到系统安装中的工具。建议在装完系统重启之后，更新完pacman和基本系统之后，就安装这个工具。<br>最简单安装Yaourt的方式是添加Yaourt源至您的 /etc/pacman.conf，在文件最后加入:</p>
+<h3 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h3><p>安装 NetworkManager 并设置自启。</p>
+<pre><code>pacman -S networkmanager
+systemctl enable NetworkManager
+systemctl start NetworkManager
+</code></pre><h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="yaourt"><a href="#yaourt" class="headerlink" title="yaourt"></a>yaourt</h3><p>Yaourt是archlinux方便使用的关键部件之一，但没有被整合到系统安装中的工具。建议在装完系统重启之后，更新完pacman和基本系统之后，就安装这个工具。<br>最简单安装Yaourt的方式是添加Yaourt源至您的 /etc/pacman.conf，在文件最后加入:</p>
 <pre><code>[archlinuxcn]
 #The Chinese Arch Linux communities packages.
 SigLevel = Optional TrustAll
@@ -302,7 +312,7 @@ chmod +x archibold
   </div>
   
     <div class="article-date">
-    <p><span>最后更新于:2016年09月18日 - 23时08分</span></p>
+    <p><span>最后更新于:2016年11月28日 - 11时37分</span></p>
 </div><br/>
 
 <nav id="article-nav">
