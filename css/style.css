@@ -124,7 +124,7 @@ body,
 }
 body {
   background: #fff;
-  font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 15px "Helvetica Neue", Helvetica, "Microsoft YaHei", STXihei, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .left,
@@ -424,7 +424,7 @@ pre {
 .article-entry blockquote footer {
   font-size: 15px;
   margin: 1.7em 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "Microsoft YaHei", STXihei, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -636,7 +636,7 @@ pre {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px "Helvetica Neue", Helvetica, "Microsoft YaHei", STXihei, Arial, sans-serif;
   padding: 0 15px;
   color: #555;
   outline: none;
