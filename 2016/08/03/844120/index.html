@@ -71,13 +71,17 @@
 <h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>首先要开启epel源，然后安装下列软件</p>
 <pre><code class="sh">yum install gcc make pam-devel libpng-devel libtool wget git qrencode
 </code></pre>
-<h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><pre><code class="sh">git clone https://github.com/google/google-authenticator
+<p>对于 ubuntu，应该安装</p>
+<pre><code class="sh">apt install libpam0g-dev build-essential
+</code></pre>
+<h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><pre><code class="sh">git clone https://github.com/google/google-authenticator-libpam
 cd google-authenticator/libpam
-./bootstrap.#!/bin/sh
+./bootstrap
 ./configure
 make
 sudo make install
 sudo cp .libs/pam_google_authenticator.so /lib64/security/
+//对于ubuntu，应该复制到 /lib/x86_64-linux-gnu/security/ ，其他系统可能不是 /lib64/security/ 目录，总之复制文件到 security 目录下
 </code></pre>
 <h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>编辑 <code>/etc/pam.d/sshd</code> ，在第一行添加</p>
 <pre><code>auth required pam_google_authenticator.so
