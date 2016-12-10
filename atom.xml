@@ -1,0 +1,1352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>coolrc&#39;s blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://coolrc.top/"/>
+  <updated>2016-11-28T03:57:48.000Z</updated>
+  <id>https://coolrc.top/</id>
+  
+  <author>
+    <name>coolrc</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arch禁用nvidia独显</title>
+    <link href="https://coolrc.top/2016/11/28/28115748/"/>
+    <id>https://coolrc.top/2016/11/28/28115748/</id>
+    <published>2016-11-28T03:57:48.000Z</published>
+    <updated>2016-11-28T03:57:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://c2.staticflickr.com/6/5668/31173628641_b3e045d3cc_o_d.png" alt=""></p>
+<p>双显卡的笔记本通常都是用的i卡，n卡都是通着电而不用的，除非你使用了 bumblebee ，否则这颗核弹会一直通电，大大减少待机时间。最好的办法是禁用N卡，不让他通电。然而很多bios是不支持禁用N卡的，或者你还想在windows上使用N卡，这时候怎么办呢？<a id="more"></a></p>
+<p>bbswitch 可以帮助你禁用N卡，首先安装 bbswitch</p>
+<pre><code class="bash">sudo pacman -S bbswitch dkms
+</code></pre>
+<p>然后设施 bbswitch 开机自动加载：</p>
+<pre><code class="bash">sudo echo &quot;bbswitch&quot; &gt;&gt; /etc/modules-load.d/modules.conf
+</code></pre>
+<p>设置 bbswitch 启动参数并禁用nouveau</p>
+<pre><code class="bash">sudo echo &quot;options bbswitch load_state=0&quot; &gt;&gt; /etc/modprobe.d/bbswitch.conf
+sudo echo &quot;blacklist nouveau&quot; &gt;&gt; /etc/modprobe.d/nouveau_blacklist.conf
+</code></pre>
+<p>然后重建 initrd</p>
+<pre><code>mkinitcpio -p linux
+</code></pre><p>其他发行版可能是 <code>mkinitrd</code>命令</p>
+<p>执行完成后重启电脑。</p>
+<p>执行 <code>lspci</code> 或 <code>lspci | grep NVIDIA</code> 查看效果，如果N卡后面显示 <code>(rev ff)</code> ，表明已经成功禁用。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://c2.staticflickr.com/6/5668/31173628641_b3e045d3cc_o_d.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;双显卡的笔记本通常都是用的i卡，n卡都是通着电而不用的，除非你使用了 bumblebee ，否则这颗核弹会一直通电，大大减少待机时间。最好的办法是禁用N卡，不让他通电。然而很多bios是不支持禁用N卡的，或者你还想在windows上使用N卡，这时候怎么办呢？
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于独处</title>
+    <link href="https://coolrc.top/2016/11/27/27142109/"/>
+    <id>https://coolrc.top/2016/11/27/27142109/</id>
+    <published>2016-11-27T06:21:09.000Z</published>
+    <updated>2016-11-27T06:21:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://c2.staticflickr.com/6/5735/30452369224_f04d5d0d91_o_d.jpg" alt=""><br>能够自得其乐，感觉到万物皆备于我，并可以说出这样的话：我的拥有就在我身——这是构成幸福的最重要的内容。<a id="more"></a></p>
+<p>因此，亚里士多德说过的一句话值得反复回味：幸福属于那些容易感到满足的人（这也是尚福的妙语所表达的同一样思想，我把这句妙语作为警句放置这本书的开首）。这其中的一个原因是人除了依靠自身以外，无法有确切把握地依靠别人；另一个原因则是社会给人所带来的困难和不便、烦恼和危险难以胜数、无法避免。</p>
+<p>获取幸福的错误方法莫过于追求花天酒地的生活，原因就在于我们企图把悲惨的人生变成接连不断的快感、欢乐和享受。这样，幻灭感就会接踵而至；与这种生活必然伴随而至的还有人与人的相互撒谎和哄骗。</p>
+<p>首先，生活在社交人群当中必然要求人们相互迁就和忍让；因此，人们聚会的场面越大，就越容易变得枯燥乏味。只有当一个人独处的时候，他才可以完全成为自己。谁要是不热爱独处，那他也就是不热爱自由，因为只有当一个人独处的时候，他才是自由的。拘谨、掣肘不可避免地伴随着社交聚会。</p>
+<p>社交聚会要求人们做出牺牲，而一个人越具备独特的个性，那他就越难做出这样的牺牲。因此，一个人逃避、忍受抑或喜爱独处是和这一个人自身具备的价值恰成比例。因为在独处的时候，一个可怜虫就会感受到自己的全部可怜之处，而一个具有丰富思想的人只会感觉到自己丰富的思想。一言以蔽之：一个人只会感觉到自己的自身。进一步而言，一个人在大自然的级别中所处的位置越高，那他就越孤独，这是根本的，同时也是必然的。如果一个人身体的孤独和精神的孤独互相对应，那反倒对他大有好处。否则，跟与己不同的人进行频繁的交往会扰乱心神，并被夺走自我，而对此损失他并不会得到任何补偿。大自然在人与人之间的道德和智力方面定下了巨大差别，但社会对这些差别视而不见，对每个人都一视同仁。</p>
+<p>更有甚者，社会地位和等级所造成的人为的差别取代了大自然定下的差别，前者通常和后者背道而驰。受到大自然薄待的人受益于社会生活的这种安排而获得了良好的位置，而为数不多得到了大自然青睐的人，位置却被贬低了。因此，后一种人总是逃避社交聚会。而每个社交聚会一旦变得人多势众，平庸就会把持统治的地位。社交聚会之所以会对才智卓越之士造成伤害，就是因为每一个人都获得了平等的权利，而这又导致人们对任何事情都提出了同等的权利和要求，尽管他们的才具参差不一。接下来的结果就是：人们都要求别人承认他们对社会作出了同等的成绩和贡献。所谓的上流社会承认一个人在其他方面的优势，却唯独不肯承认一个人在精神思想方面的优势；他们甚至抵制这方面的优势。社会约束我们对愚蠢、呆笨和反常表现出没完没了的耐性，但具有优越个性的人却必须请求别人对自己的原谅；或者，他必须把自己的优越之处掩藏起来，因为优越突出的精神思想的存在，本身就构成了对他人的损害，尽管它完全无意这样做。因此，所谓“上流”的社交聚会，其劣处不仅在于它把那些我们不可能称道和喜爱的人提供给我们，同时，还不允许我们以自己的天性方式呈现本色；相反，它强迫我们为了迎合别人而扭曲、萎缩自己。具有深度的交谈和充满思想的话语只能属于由思想丰富的人所组成的聚会。在泛泛和平庸的社交聚会中，人们对充满思想见识的谈话绝对深恶痛绝。</p>
+<p>所以，在这种社交场合要取悦他人，就绝对有必要把自己变得平庸和狭窄。因此，我们为达到与他人相像、投契的目的就只能拒绝大部分的自我。当然，为此代价，我们获得了他人的好感。但一个人越有价值，那他就越会发现自己这样做实在是得不偿失，这根本就是一桩赔本的买卖。人们通常都是无力还债的；他们把无聊、烦恼、不快和否定自我强加给我们，但对此却无法作出补偿。绝大部分的社交聚会都是这样的实质。放弃这种社交聚会以换回独处，那我们就是做成了一桩精明的生意。另外，由于真正的、精神思想的优势不会见容于社交聚会,并且也着实难得一见，为了代替它，人们就采用了一种虚假的、世俗常规的、建立在相当随意的原则之上的东西作为某种优越的表现——它在高级的社交圈子里传统般地传递着,就像暗语一样地可以随时更改。这也就是人们名之为时尚或时髦的东西。但是，当这种优势一旦和人的真正优势互相碰撞，它就马上显示其弱点。并且，“当时髦进入时,常识也就引退了。”</p>
+<p>大致说来，一个人只能与自己达致最完美的和谐，而不是与朋友或者配偶，因为人与人之间在个性和脾气方面的差异肯定会带来某些不相协调，哪怕这些不协调只是相当轻微。因此，完全、真正的内心平和和感觉宁静——这是在这尘世间仅次于健康的至高无上的恩物——也只有在一个人孤身独处 的时候才可觅到；而要长期保持这一心境，则只有深居简出才行。</p>
+<p>这样，如果一个人自身既伟大又丰富，那么，这个人就能享受到在这一贫乏的世上所能寻觅得到的最快活的状况。确实，我们可以这样说：友谊、爱情和荣誉紧紧地把人们联结在一起，但归根到底人只能老老实实地寄望于自己，顶多寄望于他们的孩子。由于客观或者主观的条件，一个人越不需要跟人们打交道，那么，他的处境也就越好。孤独的坏处就算不是一下子就被我们感觉得到，也可以让人一目了然；相比之下，社交生活的坏处却深藏不露：消遣、闲聊和其他与人交往的乐趣掩藏着巨大的，通常是难以弥补的祸害。青年人首要学习的一课，就是承受孤独，因为孤独是幸福、安乐的源泉。据此可知，只有那些依靠自己，能从一切事物当中体会到自身的人才是处境最妙的人。所以，西塞罗说过，“一个完全依靠自己，一切称得上属于他的东西都存在于他的自身的人是不可能不幸福的。”</p>
+<p>除此之外，一个人的自身拥有越多，那么，别人能够给予他的也就越少。正是这一自身充足的感觉使具有内在丰富价值的人不愿为了与他人的交往而作出必需的、显而易见的牺牲；他们更不可能会主动寻求这些交往而否定自我。相比之下，由于欠缺自身内在，平庸的人喜好与人交往，喜欢迁就别人。这是因为他们忍受别人要比忍受他们自己来得更加容易。此外，在这世上，真正具备价值的东西并不会受到人们的注意，受人注意的东西却往往缺乏价值。每一个有价值的、出类拔萃的人都宁愿引退归隐——这就是上述事实的证明和结果。据此，对于一个具备自身价值的人来说，如果他懂得尽量减少自己的需求以保存或者扩大自己的自由，尽量少与他的同类接触——因为这世上人是无法避免与其同类打交道的，那么，这个人也就具备了真正的人生智慧。</p>
+<p>–叔本华</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://c2.staticflickr.com/6/5735/30452369224_f04d5d0d91_o_d.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;能够自得其乐，感觉到万物皆备于我，并可以说出这样的话：我的拥有就在我身——这是构成幸福的最重要的内容。
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解决konsole无法输入中文的问题</title>
+    <link href="https://coolrc.top/2016/11/24/24063358/"/>
+    <id>https://coolrc.top/2016/11/24/24063358/</id>
+    <published>2016-11-23T22:33:58.000Z</published>
+    <updated>2016-11-23T22:33:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装完kde桌面后，中文输入法在konsole里面没法调用。怎么解决呢？<br>编辑<code>/etc/profile</code>,在里面加入</p>
+<pre><code class="bash">export XIM_PROGRAM=fcitx
+
+export XIM=fcitx
+
+export GTK_IM_MODULE=fcitx
+
+export QT_IM_MODULE=fcitx
+
+export XMODIFIERS=&quot;@im=fcitx&quot;
+</code></pre>
+<p>然后注销当前用户重新登录即可</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;安装完kde桌面后，中文输入法在konsole里面没法调用。怎么解决呢？&lt;br&gt;编辑&lt;code&gt;/etc/profile&lt;/code&gt;,在里面加入&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;export XIM_PROGRAM=fcitx
+
+export XI
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx反代+http2配置</title>
+    <link href="https://coolrc.top/2016/10/12/12210953/"/>
+    <id>https://coolrc.top/2016/10/12/12210953/</id>
+    <published>2016-10-12T13:09:53.000Z</published>
+    <updated>2016-10-19T15:25:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://c1.staticflickr.com/9/8640/30280932405_35376236c5_z_d.jpg" alt=""></p>
+<p>国庆节回家没事干，研究了一下nginx配置，参考了 Jerry Qu的文章 <a href="https://imququ.com/post/my-nginx-conf.html" target="_blank" rel="external">本博客 Nginx 配置之完整篇</a>,给我的 github pages 用nginx做了一个反代，顺便开启了 http/2 支持。<a id="more"></a>下面开始配置过程。</p>
+<p>操作系统我选择的是 ubuntu 16.04 ，其他发行版请自行修改命令。</p>
+<h3 id="安装并编译相关软件"><a href="#安装并编译相关软件" class="headerlink" title="安装并编译相关软件"></a>安装并编译相关软件</h3><p>首先安装依赖和编译工具：</p>
+<pre><code>sudo apt-get install build-essential libpcre3 libpcre3-dev zlib1g-dev unzip git
+</code></pre><h4 id="Brotli压缩支持"><a href="#Brotli压缩支持" class="headerlink" title="Brotli压缩支持"></a>Brotli压缩支持</h4><p>编译安装 <a href="https://github.com/google/brotli" target="_blank" rel="external">libbrotli</a>,使用 Brotli 压缩格式可以实现更高的网页压缩比。</p>
+<pre><code>sudo apt-get install autoconf libtool automake
+
+git clone https://github.com/bagder/libbrotli
+cd libbrotli
+
+# 如果提示 error: C source seen but &#39;CC&#39; is undefined，可以在 configure.ac 最后加上 AC_PROG_CC
+./autogen.sh
+
+./configure
+make
+sudo make install
+
+cd  ../
+</code></pre><p>接下来获取 ngx_brotli 源码：</p>
+<pre><code>git clone https://github.com/google/ngx_brotli.git
+</code></pre><h4 id="安装-openssl"><a href="#安装-openssl" class="headerlink" title="安装 openssl"></a>安装 openssl</h4><p>系统自带的openssl太旧，需要自行编译最新版。这里安装 openssl 1.1.0b</p>
+<pre><code>wget -O openssl.tar.gz -c https://www.openssl.org/source/openssl-1.1.0b.tar.gz
+tar zxf openssl.tar.gz
+mv openssl-1.1.0b/ openssl
+</code></pre><h4 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h4><pre><code>wget -c https://nginx.org/download/nginx-1.11.4.tar.gz
+tar zxf nginx-1.11.4.tar.gz
+
+cd nginx-1.11.4/
+
+./configure --add-module=../ngx_brotli --add-module=../nginx-ct-1.3.0 --with-openssl=../openssl --with-http_v2_module --with-http_ssl_module --with-ipv6 --with-http_gzip_static_module
+
+make
+sudo make install
+</code></pre><h4 id="Nginx管理脚本"><a href="#Nginx管理脚本" class="headerlink" title="Nginx管理脚本"></a>Nginx管理脚本</h4><p>由于nginx是自己编译的，无法使用 systemd 管理，这里用一个脚本进行管理</p>
+<pre><code class="bash">#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/local/nginx/sbin/nginx
+NAME=nginx
+DESC=nginx
+
+test -x $DAEMON || exit 0
+
+# Include nginx defaults if available
+if [ -f /etc/default/nginx ] ; then
+  . /etc/default/nginx
+fi
+
+set -e
+
+. /lib/lsb/init-functions
+
+case &quot;$1&quot; in
+  start)
+    echo -n &quot;Starting $DESC: &quot;
+    start-stop-daemon --start --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
+        --exec $DAEMON -- $DAEMON_OPTS || true
+    echo &quot;$NAME.&quot;
+    ;;
+  stop)
+    echo -n &quot;Stopping $DESC: &quot;
+    start-stop-daemon --stop --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
+        --exec $DAEMON || true
+    echo &quot;$NAME.&quot;
+    ;;
+  restart|force-reload)
+    echo -n &quot;Restarting $DESC: &quot;
+    start-stop-daemon --stop --quiet --pidfile \
+        /usr/local/nginx/logs/$NAME.pid --exec $DAEMON || true
+    sleep 1
+    start-stop-daemon --start --quiet --pidfile \
+        /usr/local/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS || true
+    echo &quot;$NAME.&quot;
+    ;;
+  reload)
+    echo -n &quot;Reloading $DESC configuration: &quot;
+    start-stop-daemon --stop --signal HUP --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
+        --exec $DAEMON || true
+    echo &quot;$NAME.&quot;
+    ;;
+  status)
+    status_of_proc -p /usr/local/nginx/logs/$NAME.pid &quot;$DAEMON&quot; nginx &amp;&amp; exit 0 || exit $?
+    ;;
+  *)
+    N=/etc/init.d/$NAME
+    echo &quot;Usage: $N {start|stop|restart|reload|force-reload|status}&quot; &gt;&amp;2
+    exit 1
+    ;;
+esac
+
+exit 0
+</code></pre>
+<p>将这个脚本放到任何位置，加上执行权限即可。</p>
+<p>现在管理 Nginx 只需使用以下命令即可：</p>
+<pre><code>sudo ./nginx start|stop|restart|reload
+</code></pre><p>如果要开机自动启动 Nginx，请执行以下命令：</p>
+<pre><code>sudo update-rc.d -f nginx defaults
+</code></pre><p>然后配置 nginx 的配置文件 <code>/usr/local/nginx/conf/nginx.conf</code>，将http部分修改成下面这样</p>
+<pre><code class="nginx">http {
+    include            mime.types;
+    default_type       application/octet-stream;
+
+    charset            UTF-8;
+
+    sendfile           on;
+    tcp_nopush         on;
+    tcp_nodelay        on;
+
+    keepalive_timeout  60;
+
+    #... ...#
+
+    gzip               on;
+    gzip_vary          on;
+
+    gzip_comp_level    6;
+    gzip_buffers       16 8k;
+
+    gzip_min_length    1000;
+    gzip_proxied       any;
+    gzip_disable       &quot;msie6&quot;;
+
+    gzip_http_version  1.0;
+
+    gzip_types         text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript image/svg+xml;
+
+    # 如果编译时添加了 ngx_brotli 模块，需要增加 brotli 相关配置
+    brotli             on;
+    brotli_comp_level  6;
+    brotli_types       text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript image/svg+xml;
+
+    #... ...#
+
+    include            /home/jerry/www/nginx_conf/*.conf; #站点配置文件地址，可以自行指定
+}
+</code></pre>
+<h3 id="生成-https-证书"><a href="#生成-https-证书" class="headerlink" title="生成 https 证书"></a>生成 https 证书</h3><p>这里使用 <a href="https://github.com/lukas2511/dehydrated" target="_blank" rel="external">dehydrated</a> 来自动申请 <a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s Encrypt</a> 的证书。</p>
+<pre><code>git clone https://github.com/lukas2511/dehydrated.git
+cd dehydrated
+</code></pre><p>然后在 dehydrated 新建一个 <code>domains.txt</code> ，里面填入你的域名，例如</p>
+<pre><code>example.com www.example.com
+example.net www.example.net wiki.example.net
+</code></pre><p>然后新建一个 nginx 站点配置文件，内容如下</p>
+<pre><code class="nginx">server {                                                                    
+         listen   80; ## 监听 IPv4 80 端口
+         server_name example.com www.example.com;
+         location /.well-known/acme-challenge {
+           alias /var/www/dehydrated;
+         }
+}
+</code></pre>
+<p>启动 nginx ，保证域名能解析到本机。</p>
+<p>创建文件夹 /var/www/dehydrated 更改目录权限为 777 。</p>
+<p>修改 dehydrated 代码，使他支持生成 ECC 证书，修改 <code>dehydreted</code> 文件，修改其中121行变量 KEY_ALGO 值为 <code>secp384r1</code> ，</p>
+<p>然后就可以生成证书了</p>
+<pre><code>./dehydrated -c
+</code></pre><p>软件会自动生成各种密钥并申请证书，完成后各种文件都在 <code>certs</code> 文件夹里保存。</p>
+<p>然后再生成一个赫尔曼密钥，使用<code>openssl dhparam -out dhparam.pem 2048</code>生成，你也可以将 2048 改成 4096 ，但是这样会耗费你几个小时的时间来生成，而 2048 只需要几分钟。</p>
+<p>然后就可以将前面创建的 nginx 站点配置文件移走，或者更改掉后缀名让nginx不读取。</p>
+<p>但是不要删除，因为 Let’s Encrypt 的证书有效期只有 90 天，官方建议每 60 天重新生成一次，下次生成还是要这个配置文件。</p>
+<h3 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h3><p>将前面创建的站点配置文件后缀更改为其他样式，新建一个配置文件</p>
+<p>内容类似这样</p>
+<pre><code class="nginx">server {
+        listen   80; ## 监听 IPv4 80 端口
+        server_name example.com www.example.com;
+        server_tokens   off;#隐藏服务器信息
+        add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;#HSTS
+        rewrite ^/(.*)$ https://coolrc.top/$1 permanent; #重定向到http
+        #减少点击劫持
+        add_header X-Frame-Options DENY;
+        #禁止服务器自动解析资源类型
+        add_header X-Content-Type-Options nosniff;
+        #防XSS攻擊
+        add_header X-Xss-Protection 1;
+         location / {
+                ## 这里用 HTTPS 比较好，代理服务器和源服务器间也是加密通讯
+                proxy_pass http://coolrc136.github.io/; #我的博客地址，这里使用https会出问题
+                proxy_set_header Accept-Encoding &quot;&quot;;
+                proxy_redirect     off;
+                proxy_set_header   Host                       $host;
+                proxy_set_header   X-Real-IP               $remote_addr;
+                proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        }
+}
+
+
+server {
+        listen   443 ssl http2; ## listen for ipv4; this line is default and implied
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #禁止不安全的协议
+        ssl_ciphers                EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+        ssl on;
+        server_tokens   off;
+        server_name example.com www.example.com;
+          ssl_prefer_server_ciphers  on;
+          ssl_stapling               on;
+          ssl_stapling_verify        on;
+        ## 这里路径为 fullchain.pem 文件的路径，文件可以随意放，确保位置正确即可
+        ssl_certificate /root/www/certs/fullchain.pem;
+        ## 这里路径 和 fullchain.pem 文件的路径作用一样
+        ##赫尔曼密钥,使用openssl dhparam -out dhparam.pem 2048命令生成
+        ssl_dhparam /root/www/certs/dhparam.pem;
+        #减少点击劫持
+        add_header X-Frame-Options DENY;
+        #禁止服务器自动解析资源类型
+        add_header X-Content-Type-Options nosniff;
+        #防XSS攻擊
+        add_header X-Xss-Protection 1;
+         location /.well-known/acme-challenge {
+           alias /var/www/dehydrated;
+         }
+         location / {
+                ## 这里用 HTTPS 比较好，代理服务器和源服务器间也是加密通讯
+                proxy_pass http://coolrc136.github.io; #这里使用https会出问题
+                proxy_set_header Accept-Encoding &quot;&quot;;
+                proxy_set_header X-Real_IP $remote_addr;
+                proxy_set_header User-Agent $http_user_agent;
+                proxy_set_header referer &quot;http://coolrc136.github.io$request_uri&quot;;
+        }
+}
+</code></pre>
+<p>这里要注意的是，github pages 是支持 https 的，而且使用 https 会更安全，但是我将上游的网址填成 https 网址的话，网页会有时候直接跳转到上游的地址，绕过代理。</p>
+<p>至此，博客反代配置成功，支持 http/2 ，使用 ECC 证书，支持 ALPN，在手机平台使用 chacha20 加密连接，pc平台使用 aes 加密，节省了性能。</p>
+<p>但是正是由于这些新特性，博客仅支持新版本浏览器，比如 IE11 以下就是不能访问博客的，如果你的访问者大多使用旧版的浏览器，你需要慎重考虑是否要这样配置。</p>
+<hr>
+<p>参考资料：</p>
+<p><a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://c1.staticflickr.com/9/8640/30280932405_35376236c5_z_d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;国庆节回家没事干，研究了一下nginx配置，参考了 Jerry Qu的文章 &lt;a href=&quot;https://imququ.com/post/my-nginx-conf.html&quot;&gt;本博客 Nginx 配置之完整篇&lt;/a&gt;,给我的 github pages 用nginx做了一个反代，顺便开启了 http/2 支持。
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+    
+      <category term="nginx" scheme="https://coolrc.top/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>当我有 6 百万时，就发布 Linux 5.0</title>
+    <link href="https://coolrc.top/2016/10/12/1012180646/"/>
+    <id>https://coolrc.top/2016/10/12/1012180646/</id>
+    <published>2016-10-12T10:06:46.000Z</published>
+    <updated>2016-10-12T10:06:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://c1.staticflickr.com/9/8414/29648436434_e9e91369b0_z_d.jpg" alt=""></p>
+<p>据 Linus Torvalds <a href="https://plus.google.com/+LinusTorvalds/posts/hbdxizBNrYn" target="_blank" rel="external">最近的一则 Google+ 帖子</a>，他开玩笑的说，当 Linux 项目有 6 百万个 Git 对象时就发布 Linux 5.0 内核。<a id="more"></a></p>
+<p>Linux 内核主要的里程碑版本，比如 Linux 3.0、Linux 4.0 都是发布于 Git 对象数量分别达到了 2 百万和 4 百万时，而在2016 年 10 月 8 日，当前的 Git 对象已经达到了 5 百万，所以，看起来到下一个百万数量线时，就会发布 Linux 5.0 了。</p>
+<p>“现在我们正处于 Linux 4.0 和 5.0 中间，”Linus Torvalds 说，“换句话说： 3.0 发布于内核 Git 对象数据库有 2 百万个对象时，而 4.0 发布于 4 百万时。所以，很自然的，按数字来说，毫无疑问 5.0 应该在我们到达 6 百万对象时发布。”</p>
+<p>正如你已经知道的， Linux 4.8 内核已经于 2016 年 10 月 2 日发布，而且由于一个<a href="http://lkml.iu.edu/hypermail/linux/kernel/1610.0/00878.html" target="_blank" rel="external">严重错误</a>，很快发布了第一个维护版本 4.8.1。这就代表目前已经进入了 Linux 4.9 内核的开发阶段，它也是下一个 LTS 分支。而就在下周 10 月 16 日，4.9 就会发布其第一个 RC 版本。</p>
+<h3 id="Linux-5-0-内核的开发将于-2016-年-12-月开始"><a href="#Linux-5-0-内核的开发将于-2016-年-12-月开始" class="headerlink" title="Linux 5.0 内核的开发将于 2016 年 12 月开始"></a>Linux 5.0 内核的开发将于 2016 年 12 月开始</h3><p>如果 Linux 4.9 内核能够正常发布，有 7 个 RC 版本的话，那它应该正式发布于 12 月 4 日。如果不幸的遇到了一些问题而延迟，那有可能要到 12 月中旬才能开启 Linux 5.0 内核的合并窗口，也许会在今年的圣诞节前发布第一个 RC 版本。</p>
+<p>而且，如果 Linux 5.0 的开发也是常规的 7 个 RC 版本的话， 第二个 RC 版本应该出现在明年 1 月 8 日，而最后一个则会在 2017 年的 2 月中旬。不管怎么说，我们会在 2 月份见到 Linux 5.0 内核的正式发布——当然，如果 6 百万 Git 对象的线达到了的话。</p>
+<hr>
+<p>编译自：<a href="http://news.softpedia.com/news/linux-kernel-5-0-to-be-released-when-we-hit-6m-git-objects-says-linus-torvalds-509108.shtml作者：" target="_blank" rel="external">http://news.softpedia.com/news/linux-kernel-5-0-to-be-released-when-we-hit-6m-git-objects-says-linus-torvalds-509108.shtml作者：</a> Marius Nestor<br>原创：LCTT <a href="https://linux.cn/article-7853-1.html" target="_blank" rel="external">https://linux.cn/article-7853-1.html</a> 译者： wxy<br>本文地址：<a href="https://linux.cn/article-7853-1.html" target="_blank" rel="external">https://linux.cn/article-7853-1.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://c1.staticflickr.com/9/8414/29648436434_e9e91369b0_z_d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;据 Linus Torvalds &lt;a href=&quot;https://plus.google.com/+LinusTorvalds/posts/hbdxizBNrYn&quot;&gt;最近的一则 Google+ 帖子&lt;/a&gt;，他开玩笑的说，当 Linux 项目有 6 百万个 Git 对象时就发布 Linux 5.0 内核。
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>校园网使用ipv6的SS免流</title>
+    <link href="https://coolrc.top/2016/09/18/18231939/"/>
+    <id>https://coolrc.top/2016/09/18/18231939/</id>
+    <published>2016-09-18T15:19:39.000Z</published>
+    <updated>2016-10-12T09:17:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>很多高校校园网ipv4都是限制流量的，像我们学校苦逼的校园网ipv4只有15G流量，根本没法下载东西啊，但是ipv6不计流量。利用这一点，可以通过ipv6连接SS走代理，这样校园网会识别你的流量都是走的ipv6，就不计流量了。只要对普通的SS配置文件稍作修改就可以愉快的免流啦。<a id="more"></a></p>
+<p>其实很简单，通常SS配置文件是这样的</p>
+<pre><code>{
+    &quot;server&quot;:&quot;my_server_ip&quot;,
+    &quot;server_port&quot;:8388,
+    &quot;local_address&quot;: &quot;127.0.0.1&quot;,
+    &quot;local_port&quot;:1080,
+    &quot;password&quot;:&quot;mypassword&quot;,
+    &quot;timeout&quot;:300,
+    &quot;method&quot;:&quot;aes-256-cfb&quot;,
+    &quot;fast_open&quot;: false
+}
+</code></pre><p>我们要做的事就是修改server一行的ip，将server行改成这样就行了:</p>
+<pre><code>&quot;server&quot;:&quot;::&quot;,
+</code></pre><p>然后在SS的客户端将原来的ipv4地址改为ipv6地址即可，要查看服务器ipv6地址，你可以去主机商的控制台查看，有的控制台不显示ipv6地址的，可以通过<code>ip addr</code>或者<code>ifconfig</code>命令查看。</p>
+<h4 id="更新："><a href="#更新：" class="headerlink" title="更新："></a>更新：</h4><p>在 shadowsocks-libev 中这样只能让ss监听ipv6，要同时监听ipv4和ipv6，应该这样</p>
+<pre><code>&quot;server&quot;:[&quot;[::0]&quot;, &quot;0.0.0.0&quot;],
+</code></pre><p>至于 shadowsocks-libev 为何要这样，你可以参考这篇文章 <a href="https://linux.cn/article-7823-1.html" target="_blank" rel="external">https://linux.cn/article-7823-1.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很多高校校园网ipv4都是限制流量的，像我们学校苦逼的校园网ipv4只有15G流量，根本没法下载东西啊，但是ipv6不计流量。利用这一点，可以通过ipv6连接SS走代理，这样校园网会识别你的流量都是走的ipv6，就不计流量了。只要对普通的SS配置文件稍作修改就可以愉快的免流啦。
+    
+    </summary>
+    
+    
+      <category term="shadowsocks" scheme="https://coolrc.top/tags/shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在ssh上使用google二次验证</title>
+    <link href="https://coolrc.top/2016/08/03/844120/"/>
+    <id>https://coolrc.top/2016/08/03/844120/</id>
+    <published>2016-08-03T08:05:30.000Z</published>
+    <updated>2016-08-03T08:05:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>vps 使用密码登陆的话，可能会遭到暴力破解。使用 google 的验证器可以在手机上生成动态验证码，即便对方得到密码也无法登陆。这篇文章介绍如何在 centos7 上启用 google 二次验证。<a id="more"></a></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>首先要开启epel源，然后安装下列软件</p>
+<pre><code class="sh">yum install gcc make pam-devel libpng-devel libtool wget git qrencode
+</code></pre>
+<p>对于 ubuntu，应该安装</p>
+<pre><code class="sh">apt install libpam0g-dev build-essential
+</code></pre>
+<h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><pre><code class="sh">git clone https://github.com/google/google-authenticator-libpam
+cd google-authenticator/libpam
+./bootstrap
+./configure
+make
+sudo make install
+sudo cp .libs/pam_google_authenticator.so /lib64/security/
+//对于ubuntu，应该复制到 /lib/x86_64-linux-gnu/security/ ，其他系统可能不是 /lib64/security/ 目录，总之复制文件到 security 目录下
+</code></pre>
+<h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>编辑 <code>/etc/pam.d/sshd</code> ，在第一行添加</p>
+<pre><code>auth required pam_google_authenticator.so
+</code></pre><p>然后编辑<code>/etc/ssh/sshd_config</code>，将<code>ChallengeResponseAuthentication</code>的值改为yes</p>
+<p>然后执行<code>systemctl restart sshd</code>重启ssh</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>切换到对应的用户，执行 <code>google-authenticator</code> ,然后程序会问你一些问题，并给出一个二维码，秘钥，还有几个应急码以供手机丢失时使用。这里一路选是即可。</p>
+<blockquote>
+<p>注意：每个应急码只能使用一次</p>
+</blockquote>
+<p>二维码使用<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=zh_CN" target="_blank" rel="external"> google 身份验证器</a>软件扫描即可。扫描成功后app界面就能显示你的验证码了。由于验证码是基于时间戳的，确保你的设备时间准确。验证器允许4分钟以内的时间误差。</p>
+<p>完成上述步骤先不要急着退出，新开一个 ssh 测试一下能否登陆，以防出现问题导致无法登陆，我这里就因为没配置好而无法登陆了，一怒之下 rebuild 。</p>
+<p>以后再登陆时，系统先会提示你输入验证码，然后才会让你输入密码。如果你手机不在身边，你也可以用应急码登陆。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;vps 使用密码登陆的话，可能会遭到暴力破解。使用 google 的验证器可以在手机上生成动态验证码，即便对方得到密码也无法登陆。这篇文章介绍如何在 centos7 上启用 google 二次验证。
+    
+    </summary>
+    
+    
+      <category term="ssh" scheme="https://coolrc.top/tags/ssh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小米路由mini破解ssh并刷入breed</title>
+    <link href="https://coolrc.top/2016/07/23/23131543/"/>
+    <id>https://coolrc.top/2016/07/23/23131543/</id>
+    <published>2016-07-23T05:15:43.000Z</published>
+    <updated>2016-07-23T05:15:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm8.staticflickr.com/7771/28455536346_e8e3cc2f10_o_d.png" alt=""><br><a id="more"></a></p>
+<h2 id="破解ssh"><a href="#破解ssh" class="headerlink" title="破解ssh"></a>破解ssh</h2><p>使用小米官网的ssh工具是不能开启ssh的，小米奸商为了节约售后成本关闭了ssh开启通道。想要开启ssh，我们得利用固件bug进行破解。<br>参考<a href="http://www.right.com.cn/forum/thread-178547-1-1.html" target="_blank" rel="external">http://www.right.com.cn/forum/thread-178547-1-1.html</a>的方法。<br>首先下载安装python。</p>
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>windows我没成功，你可以参考原帖教程。</p>
+<h3 id="linux和osx"><a href="#linux和osx" class="headerlink" title="linux和osx"></a>linux和osx</h3><h4 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h4><p>linux和osx一般是自带python3的，没有的话自行安装。然后安装依赖</p>
+<pre><code class="bash">pip3 install requests
+</code></pre>
+<h4 id="编辑破解脚本"><a href="#编辑破解脚本" class="headerlink" title="编辑破解脚本"></a>编辑破解脚本</h4><p>首先新建一个文件<code>mini.py</code>,向其中粘贴下面代码</p>
+<pre><code class="python">#!/bin/python3
+import requests
+import time
+def main():
+    Session = input(&quot;Paste your session here: &quot;)
+    #Session = &#39;1387acc0547bc5188bc22bb811b2db9c&#39;
+    print(&#39;++++++++++++++++++++++++++++++++++++++++++++++++++&#39;)
+    print(&#39;+          MiRouter OpenSSH exploit              +&#39;)
+    print(&#39;+    Codez by dadadazhiliao,QQ:271607603         +&#39;)
+    print(&#39;++++++++++++++++++++++++++++++++++++++++++++++++++&#39;)
+    print(&quot;Prepare hacking your MiRouter&quot;)
+    time.sleep(3)
+    upload(Session, &#39;payload&#39;, &#39;/extdisks/sda1&#39;)
+    #print (&#39;payload on the way.&#39;)
+    for i in range(1,10):
+        print(&#39;&gt;&#39;*i,&#39;payload on the way&#39;,end=&#39;\r&#39;)
+        time.sleep(0.3)
+    filemv(Session, &#39;/etc/rc.local&#39;, &#39;/etc/rc.local.bak&#39;)
+    for i in range(11,15):
+        print(&#39;&gt;&#39;*i,&#39;exploit it                &#39;,end=&#39;\r&#39;)
+        time.sleep(0.3)
+    filecp(Session, &#39;/extdisks/sda1/payload&#39;, &#39;/etc/&#39;)
+    for i in range(16,20):
+        print(&#39;&gt;&#39;*i,&#39;exploit it                &#39;,end=&#39;\r&#39;)
+        time.sleep(0.3)
+    filemv(Session, &#39;/etc/payload&#39;, &#39;/etc/rc.local&#39;)
+    for i in range(21,25):
+        print(&#39;&gt;&#39;*i,&#39;exploit it                &#39;,end=&#39;\r&#39;)
+        time.sleep(0.3)
+    filerm(Session, &#39;/extdisks/sda1/payload&#39;)
+    print(&#39;&gt;&#39;*26,&#39;done                &#39;)
+    print(&#39;Reboot your Router and get the ssh,enjoy :)&#39;)
+    #filerm(Session, &#39;/userdisk/data/payload&#39;)
+def upload(Session,file,fpath):
+    MiUrl = &#39;http://192.168.31.1/upload?stok=&#39; + Session + &#39;&amp;secret=&#39; + Session + &#39;&amp;target=&#39; + fpath + &#39;&amp;targetRootPath=/&#39;
+    files = {&#39;file&#39;: (&#39;payload&#39;, open(file, &#39;rb&#39;), &#39;application/octet-stream&#39;, {&#39;Expires&#39;: &#39;0&#39;})}
+    req = requests.post(url = MiUrl, files = files)
+    #print (req.content)
+
+def filemv(Session,mfile,dist):
+    MiUrl = &#39;http://192.168.31.1/cgi-bin/luci/;stok=&#39; + Session + &#39;/api/xqdatacenter/request&#39;
+    data = {&quot;payload&quot;:&#39;{&quot;api&quot;:50,&quot;source&quot;:&quot;&#39; + mfile + &#39;&quot;,&quot;target&quot;:&quot;&#39; + dist + &#39;&quot;,&quot;token&quot;:&quot;&#39; + Session +&#39;&quot;}&#39;}
+    req = requests.post(MiUrl, data=data)
+    #print (req.content)
+
+def filecp(Session,mfile,distdir):
+    MiUrl = &#39;http://192.168.31.1/cgi-bin/luci/;stok=&#39; + Session + &#39;/api/xqdatacenter/request&#39;
+    data = {&quot;payload&quot;:&#39;{&quot;api&quot;:4,&quot;source&quot;:&quot;&#39; + mfile + &#39;&quot;,&quot;target&quot;:&quot;&#39; + distdir + &#39;&quot;,&quot;token&quot;:&quot;&#39; + Session +&#39;&quot;}&#39;}
+    req = requests.post(MiUrl, data=data)
+    #print (req.content)
+def filerm(Session,dfile):
+    MiUrl = &#39;http://192.168.31.1/cgi-bin/luci/;stok=&#39; + Session + &#39;/api/xqdatacenter/request&#39;
+    data = {&quot;payload&quot;:&#39;{&quot;api&quot;:2,&quot;path&quot;:&quot;&#39; + dfile + &#39;&quot;,&quot;token&quot;:&quot;&#39; + Session +&#39;&quot;}&#39;}
+    req = requests.post(MiUrl, data=data)
+    #print (req.content)
+if __name__ == &#39;__main__&#39;:
+    main()
+    exit()
+#End
+</code></pre>
+<p>给脚本加上权限<code>chmod +x mini.py</code><br>然后新建<code>payload</code>文件，向其中粘贴以下代码</p>
+<pre><code class="bash"># restore phy config
+speed=$(uci -q get xiaoqiang.common.WAN_SPEED)
+[ -n &quot;$speed&quot; ] &amp;&amp; /usr/sbin/phyhelper swan &quot;$speed&quot;
+sed -i &quot;:x;N;s/if \[.*\; then\n.*return 0\n.*fi/#hehe/;b x&quot; /etc/init.d/dropbear
+/etc/init.d/dropbear start
+pwd=password
+(echo $pwd; sleep 1; echo $pwd) | passwd root
+exit 0
+</code></pre>
+<p>其中<code>pwd=password</code>那一行请将<code>password</code>换成你路由管理员密码</p>
+<h4 id="刷入旧版固件"><a href="#刷入旧版固件" class="headerlink" title="刷入旧版固件"></a>刷入旧版固件</h4><p>刷入路由器固件<a href="http://bigota.miwifi.com/xiaoqiang/rom/r1cm/miwifi_r1cm_firmware_4d092_2.6.11.bin" target="_blank" rel="external">2.6.11稳定版</a>或者<a href="http://bigota.miwifi.com/xiaoqiang/rom/r1cm/miwifi_r1cm_firmware_b9d56_2.7.11.bin" target="_blank" rel="external">2.7.11开发版</a>,注意一定要恢复出厂设置，否则无法成功。恢复完成后给路由器插上u盘。</p>
+<p>然后再次进入路由管理界面，完成设置引导，注意这里设置的路由管理员密码要和你上一步<code>payload</code>中的<code>pwd</code>相同成功进入管理控制台。</p>
+<p>地址栏url类似下面这样：<br><a href="http://192.168.31.1/cgi-bin/luci/;stok=e00b01a819d8a18b93d6cedb6f74d621/web/setting/upgrade" target="_blank" rel="external">http://192.168.31.1/cgi-bin/luci/;stok=e00b01a819d8a18b93d6cedb6f74d621/web/setting/upgrade</a> 将<code>stok=</code>后面的值复制下来</p>
+<p>接着运行mini.py,按照提示输入stok值等待破解完成。然后重启路由器即可连接ssh。root密码是你的路由器管理员密码。但是有时也可能是小米官网的ssh密码，请自行尝试。</p>
+<h2 id="刷入breed"><a href="#刷入breed" class="headerlink" title="刷入breed"></a>刷入breed</h2><p>使用breed刷机可以在刷机失败后利用breed重新刷机，防止变砖。<br>breed作者地址<a href="http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin" target="_blank" rel="external">http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin</a><br>下载小米专用breed，进入路由ssh，执行</p>
+<pre><code class="bash">cd /tmp
+wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
+</code></pre>
+<p>然后刷入breed</p>
+<pre><code class="bash">mtd -r write /tmp/uboot.bin Bootloader
+</code></pre>
+<p>如果你已经刷了 pandorabox 或者 openwrt ，你需要将路由刷成 ddwrt 才能刷写breed</p>
+<p>刷写命令为</p>
+<pre><code class="bash">mtd -r write /tmp/uboot.bin u-boot
+</code></pre>
+<p>然后等待重启完成即可</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>按住路由器背后reset键开机，直到蓝灯持续闪烁。</p>
+<p>电脑使用网线连接lan口，将有线网卡的IPv4设为静态(ip地址:192.168.1.2,掩码：255.255.255.0,网关：192.168.1.1)。</p>
+<p>在浏览器中打开192.168.1.1即可进入。</p>
+<p>建议刷写 breed 完成后立即进入备份 sn 。</p>
+<p>备份好后，你就可以随意刷机了，不用担心路由损坏。这里我推荐华硕的固件<a href="http://www.right.com.cn/forum/thread-158208-1-1.html" target="_blank" rel="external">http://www.right.com.cn/forum/thread-158208-1-1.html</a>，功能很全，但是我没找到包管理器，所以安装 shadowsocks 等其他软件会很麻烦。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>2016年9月17日在我买的新路由器上尝试破解失败了，目前还未解决。</p>
+<hr>
+<p>参考资料:<br><a href="http://www.right.com.cn/forum/thread-178547-1-1.html" target="_blank" rel="external">小米路由器破解开启SSH 小米路由器mini丢失SN后恢复找回SN 完美无需编程器!</a><br><a href="http://www.right.com.cn/forum/thread-161906-1-1.html" target="_blank" rel="external">AR/QCA/MTK Breed，功能强大的多线程 Bootloader</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://farm8.staticflickr.com/7771/28455536346_e8e3cc2f10_o_d.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="路由" scheme="https://coolrc.top/tags/%E8%B7%AF%E7%94%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你们搞的这个作文啊，excited！</title>
+    <link href="https://coolrc.top/2016/06/09/09145202/"/>
+    <id>https://coolrc.top/2016/06/09/09145202/</id>
+    <published>2016-06-09T06:52:02.000Z</published>
+    <updated>2016-06-09T06:52:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm9.staticflickr.com/8294/28454268696_a0b683372b_o_d.jpg" alt=""><br><a id="more"></a><br>小明和毛蛋都是巴久琉市潭克小学的小学生，小明学习好，每次考试都是100分，少不了被老师kiss一下以资奖励，毛蛋学习差，每次考试都是不及格，当然考完后巴掌是少不了的，小明后来越来越猖狂，甚至立下了不考100分就愿挨巴掌的flag，毛蛋对小明当然是怀恨在心，别看毛蛋学习差，但毛蛋喜欢研究一些古灵精怪的东西，于是他按照在一本古书上看到的方法，开始了复仇，首先，他准备了八只青蛙，一只蛤蟆，用红丝带把它们系起来后一字排开，然后在每只青蛙面前摆上一根白蜡烛，在蛤蟆面前摆上了一根红蜡烛，最后，毛蛋狠狠的下了下决心，点燃了所有蜡烛，这时候，奇迹发生了，只见青蛙身上的红丝带闪着耀眼的红光，而蛤蟆身上的红丝带更是像彩虹一样颜色变换不同，青蛙面前的白蜡烛也冒出了血红色的烟，这些烟并没有往上升，而是一丝一丝直直的向着蛤蟆面前的红蜡烛飘去，在红蜡烛那里拧成了一股烟柱向上飘去，看到这情景，毛蛋赶快默念咒语“娘要嫁人，天要续命，娘要嫁人，天要续命，娘要……”还没念几句，只听“砰”的一声炸响，一个看起来很和蔼的老人在烟雾中模模糊糊的显示出了一张带着黑框眼睛的脸，老人腼嘴一笑，开口了，声音就好像虚幻的一样：我的孩子，你的愿望是什么？毛蛋看了后激动的说，我要考试超过小明，我要得到老师的kiss，长者又是和蔼的一笑：孩子超过是不可能的，卷子一共100分，他得了100你能怎么超？我交你一个办法，你得把他的分数续过来，这样他得不了100，你也就能及格了，你说怎么样啊。毛蛋想了想说：我能续他几分呢？，长者呵呵呵呵的笑了：续是不能论分的，是论秒的，你续他60秒，然后再转换成分数，由于这60秒比那一分值钱的多，你甚至可以多得几分呢。毛蛋这下放心了，第二天考试，他把从长者那里得到的红丝带偷偷系在了小明衣服上，果然，考试后小明没满分，而自己及格了，看着小明挨了巴掌而自己得到了kiss，毛蛋心里不知道美到哪里去了，他想再谢谢长者，可是不管他怎么召唤，长者都没有再出现在他面前，半年后，毛蛋的尸体在城边小河里被发现，身上缠满了红色的丝带，就像穿了一件红衣服似的。</p>
+<p>转载自贴吧，原贴已被续。.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://farm9.staticflickr.com/8294/28454268696_a0b683372b_o_d.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="蛤" scheme="https://coolrc.top/tags/%E8%9B%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客大变样</title>
+    <link href="https://coolrc.top/2016/05/30/30131656/"/>
+    <id>https://coolrc.top/2016/05/30/30131656/</id>
+    <published>2016-05-30T05:16:56.000Z</published>
+    <updated>2016-05-30T05:16:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>对原来的jane主题进行了一些修改，加入了友链，改了一点css。<br>地址<a href="https://github.com/coolrc136/hexo-theme-jane" target="_blank" rel="external">https://github.com/coolrc136/hexo-theme-jane</a></p>
+<p>唯一的问题是浏览器右边的滚动条被原作者隐藏了，不知道应该怎么显示。</p>
+<p>下一步准备添加页面切换特效。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对原来的jane主题进行了一些修改，加入了友链，改了一点css。&lt;br&gt;地址&lt;a href=&quot;https://github.com/coolrc136/hexo-theme-jane&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://githu
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://coolrc.top/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>美化多说评论框</title>
+    <link href="https://coolrc.top/2016/02/02/02150921/"/>
+    <id>https://coolrc.top/2016/02/02/02150921/</id>
+    <published>2016-02-02T07:09:21.000Z</published>
+    <updated>2016-04-02T07:09:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://c1.staticflickr.com/9/8741/27870864153_b62912877b_b.jpg" alt=""></p>
+<p>昨天给多说换上了新的评论框样式，分享一下我的评论框css代码,将代码粘贴到多说<code>设置-基本设置-自定义css里即可</code><br><a id="more"></a></p>
+<pre><code class="css">/*head Start*/
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current {
+    border: 0px;
+    color: #6D6D6B;
+    text-shadow: none;
+    background: #F3F3F3;
+}
+
+#ds-thread #ds-reset .ds-highlight {
+    font-family: Microsoft YaHei, &quot;Helvetica Neue&quot;, Helvetica, Arial, Sans-serif;/*评论字体*/
+    font-size: 100%;
+    color: #6D6D6B !important;
+}
+
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current:hover {
+    color: #696a52;
+    background: #F2F2F2;
+}
+
+#ds-thread #ds-reset a.ds-highlight:hover {
+    color: #696a52 !important;
+}
+
+#ds-thread {
+    padding-left: 15px;
+}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset #ds-hot-posts {
+    overflow: visible;
+}
+
+#ds-thread #ds-reset .ds-post-self {
+    padding: 10px 0 10px 10px;
+}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset .ds-post-self {
+    border: 0 !important;
+}
+
+#ds-reset .ds-avatar, #ds-thread #ds-reset ul.ds-children .ds-avatar {
+    top: 15px;
+    left: -20px;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+    box-shadow: -1px 0 1px rgba(0,0,0,0.15) inset;
+    border-radius: 46px;
+    background: #F6F8FA;/*头像旁边圆圈颜色*/
+}
+
+#ds-thread .ds-avatar a {
+    display: inline-block;
+    padding: 1px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b9baa6;
+    border-radius: 50%;
+    background-color: #fff !important;
+}
+
+#ds-thread .ds-avatar a:hover {
+}
+
+#ds-thread .ds-avatar &gt; img {
+    margin: 2px 0 0 2px;
+}
+
+#ds-thread #ds-reset .ds-replybox {
+    box-shadow: none;
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-replybox.ds-inline-replybox a.ds-avatar,
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar {
+    left: 0;
+    top: 0;
+    padding: 0;
+    width: 32px !important;
+    height: 32px !important;
+    background: none;
+    box-shadow: none;
+}
+
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
+}
+
+#ds-reset .ds-replybox a.ds-avatar,
+#ds-reset .ds-replybox .ds-avatar img {
+    padding: 0;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 5px;
+}
+
+#ds-reset .ds-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+    -webkit-transition: .8s all ease-in-out;
+    -moz-transition: .4s all ease-in-out;
+    -o-transition: .4s all ease-in-out;
+    -ms-transition: .4s all ease-in-out;
+    transition: .4s all ease-in-out;
+}
+
+.ds-post-self:hover .ds-avatar img {
+    -webkit-transform: rotateX(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+#ds-thread #ds-reset .ds-comment-body {
+    -webkit-transition-delay: initial;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: initial;
+/*    background: #FFFFFF;评论背景色，我这里没有设置，如果想要要设置取消注释即可*/
+    padding: 15px 15px 15px 47px;
+    border-radius: 5px;
+    box-shadow: #B8B9B9 0 1px 3px;
+    border: white 1px solid;
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-comment-body {
+    padding-left: 15px;
+}
+
+#ds-thread #ds-reset .ds-comment-body p {
+    color: #787968;
+}
+
+#ds-thread #ds-reset .ds-comments {
+    border-bottom: 0px;
+}
+
+#ds-thread #ds-reset .ds-powered-by {
+    display: none;
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name {
+    font-weight: normal;
+    color: #3D3D3D !important;
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name:hover {
+    color: #D32 !important;
+}
+
+#ds-thread #ds-reset #ds-bubble {
+    display: none !important;
+}
+
+#ds-thread #ds-reset #ds-hot-posts {
+    border: 0;
+}
+
+#ds-reset #ds-hot-posts .ds-gradient-bg {
+    background: none;
+}
+
+#ds-thread #ds-reset .ds-comment-body:hover {
+    background-color: #F1F1F1;
+    -webkit-transition-delay: initial;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: initial;
+}
+/*Head End*/
+</code></pre>
+<p>代码里重要内容我加了注释，你可以自行修改，其他设置可以参考<a href="http://shenchaofei.cn/duoshuo-comment-box-css-custom/328.html" target="_blank" rel="external">http://shenchaofei.cn/duoshuo-comment-box-css-custom/328.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://c1.staticflickr.com/9/8741/27870864153_b62912877b_b.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;昨天给多说换上了新的评论框样式，分享一下我的评论框css代码,将代码粘贴到多说&lt;code&gt;设置-基本设置-自定义css里即可&lt;/code&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
+    
+      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+    
+      <category term="duoshuo" scheme="https://coolrc.top/tags/duoshuo/"/>
+    
+      <category term="css" scheme="https://coolrc.top/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gitignore文件失效原因</title>
+    <link href="https://coolrc.top/2015/12/28/28234118/"/>
+    <id>https://coolrc.top/2015/12/28/28234118/</id>
+    <published>2015-12-28T15:41:18.000Z</published>
+    <updated>2015-12-28T15:41:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="gitignore-文件的用途"><a href="#gitignore-文件的用途" class="headerlink" title=".gitignore 文件的用途"></a>.gitignore 文件的用途</h3><p>项目中经常会生成一些Git系统不需要追踪(track)的文件。典型的是在编译生成过程中 产生的文件或是编程器生成的临时备份文件。当然，你不追踪(track)这些文件，可以 平时不用”git add”去把它们加到索引中。 但是这样会很快变成一件烦人的事，你发现 项目中到处有未追踪(untracked)的文件; 这样也使”git add .” 和”git commit -a” 变得实际上没有用处，同时”git status”命令的输出也会有它们。<br><a id="more"></a><br>你可以在你的顶层工作目录中添加一个叫”.gitignore”的文件，来告诉Git系统要忽略 掉哪些文件。</p>
+<h3 id="为何失效"><a href="#为何失效" class="headerlink" title="为何失效"></a>为何失效</h3><p>比如在一个本地仓库中，产生了诸多的日志记录，而这些记录都是本地操作产生的，我们不必将其提交到远程仓库中，那么我们在.gitignore中添加了logs/20150514.log的过滤规则，但是在使用git status的时候，还是可以看到modified:logs/20150514.log，说明规则没有起作用。</p>
+<p>为什么增加了.gitignore里的规则却没有效果呢？<br>这是因为.gitignore文件只能作用于Untracked Files，也就是那些从来没有被Git记录过的文件（自添加以后，从未add及commit过的文件）。</p>
+<p>之所以规则不生效，是因为那些.log文件曾经被Git记录过，因此.gitignore对它们完全无效。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>1.从Git的数据库中删除对于该文件的追踪；<br>例如我要取消 <code>20150514.log</code>的追踪，执行</p>
+<pre><code>rm —cached logs/20150514.log
+</code></pre><p>2.把对应的规则写入<code>.gitignore</code>，让忽略真正生效；</p>
+<p>3.提交+推送</p>
+<p>只有这样做，所有的团队成员才会保持一致而不会有后遗症，也只有这样做，其他的团队成员根本不需要做额外的工作来维持对一个文件的改变忽略。<br>最后有一点需要注意的，<code>git rm —cached logs/20150514.log</code> 删除的是追踪状态，而不是物理文件；如果你真的是彻底不想要了，你也可以直接 rm＋忽略＋提交。</p>
+<hr>
+<p>参考资料:</p>
+<p><a href="http://gitbook.liuhui998.com/4_1.html" target="_blank" rel="external">Git Community Book 中文版</a></p>
+<p><a href="http://codepub.cn/2015/05/14/Git-filtering-method-of-uploaded-files/" target="_blank" rel="external">http://codepub.cn/2015/05/14/Git-filtering-method-of-uploaded-files/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;gitignore-文件的用途&quot;&gt;&lt;a href=&quot;#gitignore-文件的用途&quot; class=&quot;headerlink&quot; title=&quot;.gitignore 文件的用途&quot;&gt;&lt;/a&gt;.gitignore 文件的用途&lt;/h3&gt;&lt;p&gt;项目中经常会生成一些Git系统不需要追踪(track)的文件。典型的是在编译生成过程中 产生的文件或是编程器生成的临时备份文件。当然，你不追踪(track)这些文件，可以 平时不用”git add”去把它们加到索引中。 但是这样会很快变成一件烦人的事，你发现 项目中到处有未追踪(untracked)的文件; 这样也使”git add .” 和”git commit -a” 变得实际上没有用处，同时”git status”命令的输出也会有它们。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://coolrc.top/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>去除vim自动生成的un~文件</title>
+    <link href="https://coolrc.top/2015/12/13/13121246/"/>
+    <id>https://coolrc.top/2015/12/13/13121246/</id>
+    <published>2015-12-13T04:12:46.000Z</published>
+    <updated>2015-12-13T04:12:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用vim编辑文件后，总是会有一个以<code>.un~</code>结尾的文件自动生成，看着让人心烦。<br>其实这是vim的undofile和备份文件，可以让你在关闭文件后再次打开时还可以撤销上次的更改，<a id="more"></a>但是有了git之类的工具，这个功能实在有点多余，那么如何取消这个功能呢?<br>方法其实很简单，找到你的vim配置文件，在里面添加一段代码即可</p>
+<pre><code>set noundofile
+set nobackup
+set noswapfile
+</code></pre><p>如果配置文件里有</p>
+<pre><code>set undofile
+set backup
+set swapfile
+</code></pre><p>将其替换即可</p>
+<p>如果想使用这个功能的话，但是不想被那些文件烦的话，还可以写入</p>
+<pre><code>undodir=~/.undodir
+</code></pre><p>这样的话，un~文件就会被统一写入<code>~/.undodir</code>里面，不会四处分散了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用vim编辑文件后，总是会有一个以&lt;code&gt;.un~&lt;/code&gt;结尾的文件自动生成，看着让人心烦。&lt;br&gt;其实这是vim的undofile和备份文件，可以让你在关闭文件后再次打开时还可以撤销上次的更改，
+    
+    </summary>
+    
+      <category term="linux" scheme="https://coolrc.top/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+    
+      <category term="vim" scheme="https://coolrc.top/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Archlinux自动更换gdm背景</title>
+    <link href="https://coolrc.top/2015/12/12/12162852/"/>
+    <id>https://coolrc.top/2015/12/12/12162852/</id>
+    <published>2015-12-12T08:28:52.000Z</published>
+    <updated>2015-12-12T08:28:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>gdm背景实在难看，上网搜索发现archibold可以更换背景，于是写了个自动更换脚本</p>
+<p>Archlinux上自动更换gdm登录界面背景的脚本</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>自动选择代码来自<a href="http://git.oschina.net/aliendata/My_Other_Program/tree/master/gnome_background_switcher" target="_blank" rel="external"> 黄家垚 / My_Other_Program </a></p>
+<p>程序调用<a href="http://archibold.io" target="_blank" rel="external">archibold</a>来更换背景<br><a id="more"></a></p>
+<p>将jpg格式图片放~/图片/Autowallpaper/目录下，然后执行脚本即可，有多个图片时，程序会自动选取一个作为背景</p>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>首先在<code>~/图片/</code>下创建<code>AutoWallpaper</code>文件夹，将要更换的背景放到里面，文件名不能为<code>background.*</code>然后执行</p>
+<pre><code>git clone https://github.com/coolrc136/gdm-background-switcher.git
+cd gdm-background-switcher
+chmod +x install.sh
+./install.sh
+</code></pre><p>要自动换壁纸，你需要将脚本设置为登录后自动启动，请先安装aur里的<a href="https://aur.archlinux.org/packages/gnome-session-properties/" target="_blank" rel="external">gnome-session-properties</a>,然后添加<code>/usr/bin/auto-switcher.sh</code>命令即可</p>
+<p>程序会在下次开机时更换背景，要更换的背景为<code>~/图片/background.*</code></p>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p>要卸载脚本，请执行</p>
+<pre><code>    chmod +x uninstall.sh
+    ./uninstall.sh
+</code></pre><p>如果不想在卸载时恢复背景，请删除uninstall.sh最后一行后执行上面命令<br>最后在gnome-session-properties删掉命令即可</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;gdm背景实在难看，上网搜索发现archibold可以更换背景，于是写了个自动更换脚本&lt;/p&gt;
+&lt;p&gt;Archlinux上自动更换gdm登录界面背景的脚本&lt;/p&gt;
+&lt;h2 id=&quot;声明&quot;&gt;&lt;a href=&quot;#声明&quot; class=&quot;headerlink&quot; title=&quot;声明&quot;&gt;&lt;/a&gt;声明&lt;/h2&gt;&lt;p&gt;自动选择代码来自&lt;a href=&quot;http://git.oschina.net/aliendata/My_Other_Program/tree/master/gnome_background_switcher&quot;&gt; 黄家垚 / My_Other_Program &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;程序调用&lt;a href=&quot;http://archibold.io&quot;&gt;archibold&lt;/a&gt;来更换背景&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+    
+      <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
+    
+      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>删除git历史记录</title>
+    <link href="https://coolrc.top/2015/12/07/1878478/"/>
+    <id>https://coolrc.top/2015/12/07/1878478/</id>
+    <published>2015-12-07T04:47:16.000Z</published>
+    <updated>2015-12-07T04:47:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>git用时间长了文件就会特别大，尤其是二进制文件，如果我们不想要这些历史记录的话，就可以通过下面方法删除掉。</p>
+<h3 id="删记录"><a href="#删记录" class="headerlink" title="删记录"></a>删记录</h3><pre><code>git cat-file commit master^X | sed -e &#39;/^parent/ d&#39; &gt; tmpfile
+git rebase --onto $(git hash-object -t commit -w tmpfile) master
+</code></pre><a id="more"></a>
+<pre><code>rm -f tmpfile
+</code></pre><p>其中X是要保留的记录条数</p>
+<h3 id="删除本地log"><a href="#删除本地log" class="headerlink" title="删除本地log"></a>删除本地log</h3><p>这个时候,你的log里已经没有历史的提交了,但是历史的数据还存在于本地,<br>要想完全删除的话,执行以下代码</p>
+<pre><code>rm -rf .git/logs
+git gc
+</code></pre><h3 id="同步到远程仓库"><a href="#同步到远程仓库" class="headerlink" title="同步到远程仓库"></a>同步到远程仓库</h3><p>注意,这里只对master进行了操作,如果你还有其它branch或tag,都需要类似于这样地处理一遍.<br>要同步到远程仓库，直接</p>
+<pre><code>git push --force
+</code></pre><p>强制同步即可</p>
+<hr>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://blog.czbix.com/remove-git-history.html" target="_blank" rel="external">https://blog.czbix.com/remove-git-history.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;git用时间长了文件就会特别大，尤其是二进制文件，如果我们不想要这些历史记录的话，就可以通过下面方法删除掉。&lt;/p&gt;
+&lt;h3 id=&quot;删记录&quot;&gt;&lt;a href=&quot;#删记录&quot; class=&quot;headerlink&quot; title=&quot;删记录&quot;&gt;&lt;/a&gt;删记录&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;git cat-file commit master^X | sed -e &amp;#39;/^parent/ d&amp;#39; &amp;gt; tmpfile
+git rebase --onto $(git hash-object -t commit -w tmpfile) master
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://coolrc.top/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用GitHub来管理博客源文件</title>
+    <link href="https://coolrc.top/2015/12/06/06233830/"/>
+    <id>https://coolrc.top/2015/12/06/06233830/</id>
+    <published>2015-12-06T15:38:30.000Z</published>
+    <updated>2015-12-06T15:38:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>载自<a href="http://wuchong.me/blog/2014/01/17/use-github-to-manage-hexo-source/" target="_blank" rel="external">http://wuchong.me/blog/2014/01/17/use-github-to-manage-hexo-source/</a></p>
+<p>使用hexo写博客的一个问题就是源文件都是在本地的，如果换了电脑需要更新博客时就会比较麻烦。正好快要放假回家了，这个问题急需解决。</p>
+<p>以前的解决办法是将博客拷到U盘里，但是同步又比较麻烦。使用云盘时每次又提示.git文件不能上传。目前，觉得比较靠谱的办法就是用github来管理了。<a id="more"></a></p>
+<p>hexo如果用git文件托管的话，一般在<code>.deploy</code>文件夹下会有个<code>.git</code>文件夹。现在我们在根目录下也弄个<code>.git</code>文件夹就可以了，并且两者可以很和谐地相处。</p>
+<h3 id="Step-by-Step"><a href="#Step-by-Step" class="headerlink" title="Step by Step"></a>Step by Step</h3><p>在github下建立一个新的<code>repository</code> ，名叫<code>blog</code>（与hexo文件夹名一样即可）。<br>在本地进入<code>blog</code>文件夹，用命令<code>git init</code>创建仓库。</p>
+<p>设置远程仓库地址，并更新</p>
+<pre><code class="bash">git remote add origin git@github.com:wuchong/blog.git
+git pull origin
+</code></pre>
+<p>修改<code>.gitignore</code>文件（如果没有，请创建），在里面加入<code>public/</code>和<code>.deploy/</code>，因为这两个文件夹是每次generate和deploy都会更新，对我们没用，因此忽略这两个文件的更新。tips:此处最好不要用windows自带记事本打开，因为默认的回车符不一样，会导致无法生效，可以使用sublime或notepad。</p>
+<p>使用命令<code>git add .</code>，将所有文件提交到缓存区。</p>
+<p>使用命令<code>git commit -m &quot;add all files&quot;</code> ，将这些文件提交到本地仓库。</p>
+<p>使用命令<code>git push origin master</code>，将本地仓库的改动推送到github仓库。</p>
+<p>现在在任何一台电脑，只需要<code>git clone &lt;address&gt;</code>，就可以将hexo的源文件复制到本地了。之后，当写博客后，只需要<code>git add .</code>再<code>git commit -m</code>再<code>git push</code>即可提交到远程仓库。当远程仓库有更新时，使用git pull或者git fetch就可以同步代码到本地了。</p>
+<hr>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>我的GitHub托管地址：<a href="https://github.com/coolrc136/my-blog" target="_blank" rel="external">https://github.com/coolrc136/my-blog</a><br>遇到SSH问题请参考：<a href="http://www.cnblogs.com/fnng/archive/2012/01/07/2315685.html" target="_blank" rel="external">这里</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;载自&lt;a href=&quot;http://wuchong.me/blog/2014/01/17/use-github-to-manage-hexo-source/&quot;&gt;http://wuchong.me/blog/2014/01/17/use-github-to-manage-hexo-source/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用hexo写博客的一个问题就是源文件都是在本地的，如果换了电脑需要更新博客时就会比较麻烦。正好快要放假回家了，这个问题急需解决。&lt;/p&gt;
+&lt;p&gt;以前的解决办法是将博客拷到U盘里，但是同步又比较麻烦。使用云盘时每次又提示.git文件不能上传。目前，觉得比较靠谱的办法就是用github来管理了。
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://coolrc.top/categories/hexo/"/>
+    
+    
+      <category term="git" scheme="https://coolrc.top/tags/git/"/>
+    
+      <category term="hexo" scheme="https://coolrc.top/tags/hexo/"/>
+    
+      <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Achlinux安装教程及美化教程</title>
+    <link href="https://coolrc.top/2015/12/04/04231804/"/>
+    <id>https://coolrc.top/2015/12/04/04231804/</id>
+    <published>2015-12-04T15:18:04.000Z</published>
+    <updated>2016-11-28T03:37:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm9.staticflickr.com/8493/28408174511_b96a4f5edc_b_d.jpg" alt=""></p>
+<p>此文章记录我安装arch的过程，安装环境为uefi+gpt，桌面使用gnome3，输入法使用了gnome默认的ibus</p>
+<p>下面开始安装过程</p>
+<hr>
+<a id="more"></a>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="下载镜像及刻U盘"><a href="#下载镜像及刻U盘" class="headerlink" title="下载镜像及刻U盘"></a>下载镜像及刻U盘</h3><p>我的镜像来自163源<a href="http://mirrors.163.com/archlinux/iso/" target="_blank" rel="external">mirrors.163.com/archlinux/iso/</a>,进去选最近的日期文件夹，下载里面的iso文件即可</p>
+<p>刻盘我使用的arch官方推荐的rufus<a href="https://rufus.akeo.ie/" target="_blank" rel="external">rufus.akeo.ie</a>，如果你用的是linux系统的话，有些系统自带刻盘工具，没有的话用dd指令即可。</p>
+<h3 id="改bios"><a href="#改bios" class="headerlink" title="改bios"></a>改bios</h3><p>进bios把第一启动项改为U盘启动</p>
+<h3 id="提前分区"><a href="#提前分区" class="headerlink" title="提前分区"></a>提前分区</h3><p>分区其实可以在安装时进行，不过命令行里分区实在蛋疼，所以我提前在windows里分好了，进去后格式化即可</p>
+<p>linux分区方案很多，对于新手的话，只需要一个<code>/</code>分区和一个<code>swap</code>分区即可。<br>不过这里我是在uefi+gpt的环境下安装，所以还需要一个boot分区</p>
+<p>分区在windows下用可以用<em>diskgenius</em>进行可视化操作，只需要压缩windows下不用的分区，创建额外的分区即可，注意不要分配盘符</p>
+<p>分区的大小可可以依照自己的需求，建议swap分区为内存的1-1.5倍，<code>/</code>分区大小是你将来整个系统的大小，建议15G以上，我这里分了55G，因为是要作为主系统使用，只是玩玩的话可以分少一点</p>
+<p>如果你有windows系统，那么你已经有了boot分区，以后挂载即可</p>
+<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p>插上U盘，重启，电脑会自动进去U盘安装程序，然后选择第一个选项开始安装64位的系统</p>
+<h3 id="连接网络"><a href="#连接网络" class="headerlink" title="连接网络"></a>连接网络</h3><h4 id="无线网卡"><a href="#无线网卡" class="headerlink" title="无线网卡"></a>无线网卡</h4><p>有无线网卡的使用<code>wifi-menu</code>指令进入wifi配置界面连接到wifi即可，网卡驱动不受支持的，请先使用手机开usb网络共享，然后参照下一条。。。。。。</p>
+<h4 id="有路由的网络"><a href="#有路由的网络" class="headerlink" title="有路由的网络"></a>有路由的网络</h4><p>没网卡但是有路由器的，确认网线经过路由器的中转，输入<code>dhcpcd</code>即可。不过不知为何，我这里需要连续输入两次才能正确连接到网络</p>
+<h4 id="静态IP及拨号网络"><a href="#静态IP及拨号网络" class="headerlink" title="静态IP及拨号网络"></a>静态IP及拨号网络</h4><p>我表示不会。。。。。。。<br>请参照<a href="https://wiki.archlinux.org/index.php/Category:Network_configuration" target="_blank" rel="external">archwiki</a></p>
+<h4 id="确认网络连接"><a href="#确认网络连接" class="headerlink" title="确认网络连接"></a>确认网络连接</h4><p>使用ping命令确认网络连接成功</p>
+<pre><code>    ping www.baidu.com
+</code></pre><p>ctrl+c停止ping</p>
+<h3 id="同步系统时间"><a href="#同步系统时间" class="headerlink" title="同步系统时间"></a>同步系统时间</h3><p>输入一下指令同步时间</p>
+<pre><code>timedatectl set-ntp true
+</code></pre><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>这里我们之前已经分好了，只要格式化一下就行，没有分区的请自行在<a href="https://wiki.archlinux.org/index.php/GNU_Parted" target="_blank" rel="external">archwiki</a>查找分区方法</p>
+<h3 id="创建文件系统"><a href="#创建文件系统" class="headerlink" title="创建文件系统"></a>创建文件系统</h3><p>输入lsblk查找你刚才分好的分区的位置,分区编号格式为/dev/sdxy，例如/dev/sda6，后面就</p>
+<p>对于<code>boot</code>分区（如果你是双系统，请忽略这一步）</p>
+<pre><code>mkfs.vfat-F32 /dev/sdxy
+</code></pre><p>对于<code>/</code>分区</p>
+<pre><code>mkfs.ext4 /dev/sdxy
+</code></pre><p>对于<code>swap</code>分区</p>
+<pre><code>mkswap /dev/sdxy
+swapon /dev/sdxy
+</code></pre><h3 id="挂载-分区"><a href="#挂载-分区" class="headerlink" title="挂载/分区"></a>挂载<code>/</code>分区</h3><p>先挂载分区</p>
+<pre><code>mount /dev/sdxy /mnt
+</code></pre><p>然后是<code>boot</code>分区</p>
+<pre><code>mkdir -p /mnt/boot
+mount /dev/sdxy /mnt/boot
+</code></pre><h2 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h2><h3 id="配置安装镜像源"><a href="#配置安装镜像源" class="headerlink" title="配置安装镜像源"></a>配置安装镜像源</h3><p>arch国外镜像连接较慢，我们需要自行配置安装镜像</p>
+<p>编辑<code>/etc/pacman.d/mirrorlist</code>文件</p>
+<pre><code>nano /etc/pacman.d/mirrorlist
+</code></pre><p>中国推荐中科大源和网易源</p>
+<p>在<code>/etc/pacman.d/mirrorlist</code>前面加入以下内容</p>
+<pre><code>Server = http://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+</code></pre><h3 id="安装基本软件包"><a href="#安装基本软件包" class="headerlink" title="安装基本软件包"></a>安装基本软件包</h3><pre><code>pacman -Syy
+pacstrap -i /mnt base base-devel
+</code></pre><h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><p>你已经安装好了系统，下面需要进行基本配置</p>
+<h3 id="生成fstab"><a href="#生成fstab" class="headerlink" title="生成fstab"></a>生成fstab</h3><pre><code>genfstab -U -p /mnt &gt; /mnt/etc/fstab
+</code></pre><h3 id="chroot"><a href="#chroot" class="headerlink" title="chroot"></a>chroot</h3><p>chroot进新系统</p>
+<pre><code>arch-chroot /mnt /bin/bash
+</code></pre><h3 id="Locale"><a href="#Locale" class="headerlink" title="Locale"></a>Locale</h3><p>本地化的程序与库若要本地化文本，都依赖 Locale, 后者明确规定地域、货币、时区日期的格式、字符排列方式和其他本地化标准等等。在下面两个文件设置：locale.gen 与 locale.conf.<br>/etc/locale.gen是一个仅包含注释文档的文本文件。指定您需要的本地化类型，只需移除对应行前面的注释符号（＃）即可，建议选择帶UTF-8的項：</p>
+<pre><code>  nano /etc/locale.gen
+
+  en_US.UTF-8 UTF-8
+  zh_CN.UTF-8 UTF-8
+  zh_TW.UTF-8 UTF-8
+</code></pre><p>接着执行locale-gen以生成locale讯息：</p>
+<pre><code>locale-gen
+</code></pre><h3 id="设置时间"><a href="#设置时间" class="headerlink" title="设置时间"></a>设置时间</h3><pre><code># ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+hwclock --systohc --utc
+</code></pre><h3 id="创建初始-ramdisk-环境"><a href="#创建初始-ramdisk-环境" class="headerlink" title="创建初始 ramdisk 环境"></a>创建初始 ramdisk 环境</h3><p>在您用 pacstrap 安装 linux 时就会自动运行 mkinitcpio，大部分用户都可以使用 mkinitcpio.conf 默认设置，如果有定制需求，请阅读re-generate the initramfs image。然后运行：</p>
+<pre><code>mkinitcpio -p linux
+</code></pre><h3 id="设置-Root-密码"><a href="#设置-Root-密码" class="headerlink" title="设置 Root 密码"></a>设置 Root 密码</h3><p>用 passwd 设置一个 root 密码：</p>
+<pre><code>passwd
+</code></pre><h3 id="安装bootloader"><a href="#安装bootloader" class="headerlink" title="安装bootloader"></a>安装bootloader</h3><h4 id="uefi模式下bootctl安装方法："><a href="#uefi模式下bootctl安装方法：" class="headerlink" title="uefi模式下bootctl安装方法："></a>uefi模式下bootctl安装方法：</h4><p>输入</p>
+<pre><code>bootctl install
+</code></pre><p>bootctl 会创建 /boot/loader/entries/arch.conf 并添加以下内容（没有的话请自行添加内容），别忘了把 /dev/sdxy 改为您的实际<code>/</code>分区，例如/dev/sda1:</p>
+<pre><code>nano /boot/loader/entries/arch.conf
+</code></pre><p>写入</p>
+<pre><code>title          Arch Linux
+linux          /vmlinuz-linux
+initrd         /initramfs-linux.img
+options        root=/dev/sdxy rw
+</code></pre><p>然后创建 /boot/loader/loader.conf，并写入下面配置:</p>
+<pre><code>nano /boot/loader/loader.conf
+</code></pre><p>写入timeout数值为开机选择系统的时间，我这里设置了30s</p>
+<pre><code>default  arch
+timeout  30
+</code></pre><p>完成后输入</p>
+<pre><code>bootctl update
+</code></pre><h4 id="grub引导"><a href="#grub引导" class="headerlink" title="grub引导"></a>grub引导</h4><pre><code>pacman -S grub os-prober efibootmgr ntfs-3g
+#BIOS+MBR
+grub-install --recheck /dev/sdX
+#UEFI+GPT
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+</code></pre><p>然后执行</p>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><p>chroot下执行上述命令并不会添加windows引导，你需要在下次重启到arch后再次执行上述命令。</p>
+<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><p>设置个您喜欢的主机名，这里以myhostname代替：</p>
+<pre><code>echo myhostname &gt; /etc/hostname
+</code></pre><p>并在 /etc/hosts 添加同样的主机名：</p>
+<pre><code>#&lt;ip-address&gt;    &lt;hostname.domain.org&gt;    &lt;hostname&gt;
+127.0.0.1    localhost.localdomain    localhost    myhostname
+::1        localhost.localdomain    localhost    myhostname
+</code></pre><h3 id="网络连接"><a href="#网络连接" class="headerlink" title="网络连接"></a>网络连接</h3><h4 id="dhcp网络"><a href="#dhcp网络" class="headerlink" title="dhcp网络"></a>dhcp网络</h4><pre><code>systemctl enable dhcpcd
+</code></pre><h4 id="无线网络"><a href="#无线网络" class="headerlink" title="无线网络"></a>无线网络</h4><pre><code>pacman -S iw wpa_supplicant dialog
+</code></pre><h3 id="重启进新系统"><a href="#重启进新系统" class="headerlink" title="重启进新系统"></a>重启进新系统</h3><p>你已经完成了基本系统的安装，输入exit退出chroot并输入reboot重启进系统（开机前拔掉U盘）双系统直接进windows的话，请在windows下使用easyuefi禁用windows boot manager</p>
+<p>需要驱动及拨号连接请自行查找资料</p>
+<h2 id="图形界面安装"><a href="#图形界面安装" class="headerlink" title="图形界面安装"></a>图形界面安装</h2><p>下面开始安装图形界面</p>
+<h3 id="Xorg"><a href="#Xorg" class="headerlink" title="Xorg"></a>Xorg</h3><p>首先是装Xorg</p>
+<pre><code>pacman -S xorg-server xorg-xinit
+</code></pre><h3 id="触摸板驱动"><a href="#触摸板驱动" class="headerlink" title="触摸板驱动"></a>触摸板驱动</h3><pre><code>pacman -S  xf86-input-synaptics
+</code></pre><h3 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>下面安装显卡驱动<br>intel</p>
+<pre><code>pacman -S xf86-video-intel
+</code></pre><p>英伟达</p>
+<pre><code>pacman -S xf86-video-nv
+</code></pre><p>ATi</p>
+<pre><code>pacman -S xf86-video-ati
+</code></pre><p>我这里是双显卡，我只安装了intel的驱动</p>
+<p>这个时候startx是不能进入x界面的，不过不用担心，请继续看后续教程。</p>
+<h3 id="gnome桌面"><a href="#gnome桌面" class="headerlink" title="gnome桌面"></a>gnome桌面</h3><p>gnome桌面只要安装gnome包即可，还有一个gnome-extra包可以提供额外的常用软件和几个游戏，你可以安装时选择你要的软件，没有必要全选，当然也可以不装这个包，我这里只选了gnome-tweak-tool这个工具</p>
+<pre><code>pacman -S gnome gnome-extra
+</code></pre><p>然后安装gdm登录管理器</p>
+<pre><code>pacman -S gnome gdm
+</code></pre><p>将gdm设置为开机自启动，这样开机时会自动载入桌面</p>
+<pre><code>systemctl enable gdm
+</code></pre><h3 id="kde5桌面"><a href="#kde5桌面" class="headerlink" title="kde5桌面"></a>kde5桌面</h3><p>安装plasma5</p>
+<pre><code>基础包
+pacman -S plasma
+完整包
+pacman -S plasma-meta
+最简安装（仅有桌面软件）
+pacman -S plasma-desktop
+</code></pre><p>然后是登录管理器SDDM</p>
+<pre><code>pacman -S sddm
+</code></pre><p>将SDDM设置为开机自启动</p>
+<pre><code>systemctl enable sddm
+</code></pre><p>安装中文包</p>
+<pre><code>pacman -S  kde-l10n-zh_cn
+</code></pre><h3 id="startx-启动图形界面"><a href="#startx-启动图形界面" class="headerlink" title="startx 启动图形界面"></a>startx 启动图形界面</h3><p>如果你不想开机自动进入桌面，可以使用startx启动桌面，如果要使用startx，就不用安装登录管理器。</p>
+<pre><code>pacman -S xorg-xinit
+</code></pre><p>对你的startx配置文件进行设置</p>
+<pre><code>nano /etc/X11/xinit/xinitrc
+</code></pre><p>文件最后有这样一段,删掉或者注释掉这些内容</p>
+<pre><code>twm &amp;
+xclock -geometry 50x50-1+1 &amp;
+xterm -geometry 80x50+494+51 &amp;
+xterm -geometry 80x20+494-0 &amp;
+exec xterm -geometry 80x66+0+0 -name login
+</code></pre><p>如果你使用的是gnome桌面，在最后添加</p>
+<pre><code>exec gnome-session
+</code></pre><p>如果是kde5，则添加</p>
+<pre><code>exec startkde
+</code></pre><p>然后保存文件，这时候，你已经可以使用startx来进入桌面了。<br>如果想要每个用户进入不同的桌面，你可以以用户身份登录，为用户复制一份单独的配置文件</p>
+<pre><code>cp /etc/X11/xinit/xinitrc ~/.xinitrc
+</code></pre><p>然后编辑<code>~/.xinitrc</code>即可</p>
+<h3 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h3><pre><code>useradd -m -G wheel -s /bin/bash 用户名
+</code></pre><h3 id="用户密码"><a href="#用户密码" class="headerlink" title="用户密码"></a>用户密码</h3><pre><code>passwd 用户名
+</code></pre><h3 id="安装sudo"><a href="#安装sudo" class="headerlink" title="安装sudo"></a>安装sudo</h3><p>为安全期间，我们可以用sudo来使用root权限</p>
+<pre><code>pacman -S sudo
+</code></pre><p>将用户加入sudo组<br>在<code>/etc/sudoers</code>加入这个：</p>
+<pre><code>用户名   ALL=(ALL) ALL
+</code></pre><p>也可以去掉<code>#%wheel ALL=(ALL) ALL</code>这一行前面的#</p>
+<h3 id="中文字体"><a href="#中文字体" class="headerlink" title="中文字体"></a>中文字体</h3><p>你需要中文字体才能使用gnome-terminal</p>
+<pre><code>pacman -S wqy-microhei
+</code></pre><p>现在你已经可以使用你的系统了，输入<code>reboot</code>重启后系统即可自动进入gdm界面，然后进入桌面</p>
+<h3 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h3><p>安装 NetworkManager 并设置自启。</p>
+<pre><code>pacman -S networkmanager
+systemctl enable NetworkManager
+systemctl start NetworkManager
+</code></pre><h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="yaourt"><a href="#yaourt" class="headerlink" title="yaourt"></a>yaourt</h3><p>Yaourt是archlinux方便使用的关键部件之一，但没有被整合到系统安装中的工具。建议在装完系统重启之后，更新完pacman和基本系统之后，就安装这个工具。<br>最简单安装Yaourt的方式是添加Yaourt源至您的 /etc/pacman.conf，在文件最后加入:</p>
+<pre><code>[archlinuxcn]
+#The Chinese Arch Linux communities packages.
+SigLevel = Optional TrustAll
+Server   = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre><p>然后</p>
+<pre><code>pacman -Syu yaourt
+</code></pre><h3 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h3><p>这里安装ibus作为中文输入法</p>
+<pre><code>sudo pacman -S ibus
+sudo pacman -S ibus-pinyin
+</code></pre><p>在~/.bashrc里面加入</p>
+<pre><code>export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+</code></pre><p>然后在设置里启用输入法</p>
+<p>你也可以安装fcitx：</p>
+<pre><code>sudo pacman -S fcitx-im fcitx-configtool
+</code></pre><p>同样的，在~/.bashrc写入</p>
+<pre><code>export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=“@im=fcitx”
+</code></pre><p>然后执行</p>
+<pre><code>gsettings set \
+org.gnome.settings-daemon.plugins.xsettings overrides \
+&quot;{&#39;Gtk/IMModule&#39;:&lt;&#39;fcitx&#39;&gt;}&quot;
+</code></pre><p>安装搜狗输入法</p>
+<pre><code>yaourt -S fcitx-sogoupinyin
+</code></pre><p>然后进入fcitx设置进行配置即可</p>
+<h3 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h3><p>前面已经安装了yaourt，这里只要</p>
+<pre><code>yaourt -S google-chrome
+</code></pre><h3 id="解压软件"><a href="#解压软件" class="headerlink" title="解压软件"></a>解压软件</h3><p>需要图形化的解压软件可以这样：</p>
+<pre><code>sudo pacman -S p7zip file-roller unrar
+</code></pre><h3 id="文件系统支持"><a href="#文件系统支持" class="headerlink" title="文件系统支持"></a>文件系统支持</h3><p>要支持制作fat文件系统，安装dosfstools，默认内核只能读取ntfs，要支持ntfs读写，安装ntfs-3g。</p>
+<pre><code>sudo pacman -S ntfs-3g dosfstools
+</code></pre><h3 id="无线AP"><a href="#无线AP" class="headerlink" title="无线AP"></a>无线AP</h3><p>需要安装create-ap才能使用gnome3设置里的创建热点选项</p>
+<pre><code>sudo pacman -S create_ap
+</code></pre><p>###</p>
+<h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><p>此处仅为gnome美化<br>这里先展示一下美化后的样子<br><img src="https://farm9.staticflickr.com/8624/28454262596_69cba63038_b_d.jpg" alt=""></p>
+<h3 id="gnome-tweak-tool"><a href="#gnome-tweak-tool" class="headerlink" title="gnome-tweak-tool"></a>gnome-tweak-tool</h3><p>如果你安装了gnome-extra，那么这个工具已经被安装了，否则的话</p>
+<pre><code>sudo pacman -S gnome-tweak-tool
+</code></pre><h3 id="图标包"><a href="#图标包" class="headerlink" title="图标包"></a>图标包</h3><p>这里我使用的numix-circle图标包，这个图标包在aur里，直接用yaourt即可</p>
+<pre><code>yaourt -S numix-circle-icon-theme-git
+</code></pre><p>然后在gnome-tweak-tool里启用主题</p>
+<h3 id="gtk主题"><a href="#gtk主题" class="headerlink" title="gtk主题"></a>gtk主题</h3><p>gtk主题我选择了arc主题</p>
+<pre><code>yaourt -S gtk-theme-arc-git
+</code></pre><p>然后在gnome-tweak-tool里启用</p>
+<h3 id="gnome-shell主题"><a href="#gnome-shell主题" class="headerlink" title="gnome-shell主题"></a>gnome-shell主题</h3><p>首先在gnome-tweak-tool里的<code>拓展</code>里启用<code>User themes</code></p>
+<p>然后安装主题，这里我是用的贴吧的@Air_Wawei的Air主题，并自己做了些修改。</p>
+<p>首先<a href="/tar/Air-theme.tar">下载主题</a> 然后解压，将Air文件夹放到<code>/usr/share/themes/</code>文件夹里，在gnome-tweak-tool里启用主题</p>
+<h3 id="gdm背景"><a href="#gdm背景" class="headerlink" title="gdm背景"></a>gdm背景</h3><p>输入以下指令</p>
+<pre><code>curl -L -O http://archibold.io/sh/archibold
+chmod +x archibold
+./archibold login-backgroung 你的背景的地址
+</code></pre><p>重启后gdm就会变成你要的背景</p>
+<h3 id="gnome-shell拓展"><a href="#gnome-shell拓展" class="headerlink" title="gnome-shell拓展"></a>gnome-shell拓展</h3><p>shell拓展请进入<a href="https://extensions.gnome.org/" target="_blank" rel="external">https://extensions.gnome.org/</a>自行按照说明安装</p>
+<h3 id="screenfetch"><a href="#screenfetch" class="headerlink" title="screenfetch"></a>screenfetch</h3><p>screenfetch可以在终端里输出你的系统logo和状态。<br><img src="https://farm9.staticflickr.com/8332/28454264086_eb0f9d6779_o_d.jpg" alt=""><br>可以用pacman安装：</p>
+<pre><code>pacman -S screenfetch
+</code></pre><p>要让screenfetch在打开终端是自动输出，在~/.bashrc里加入</p>
+<pre><code>screenfetch
+</code></pre><h3 id="dock"><a href="#dock" class="headerlink" title="dock"></a>dock</h3><p>要获得像苹果osx一样的dock可以用docky或者dash-to-dock<br>docky的话<code>sudo pacman -S docky</code>即可，docky不支持wayland。<br>dash-to-dock是gnome拓展，请在<a href="https://extensions.gnome.org/" target="_blank" rel="external">https://extensions.gnome.org/</a>自行按照说明安装<br>我这里装了docky，这是我的docky配置<br><img src="https://farm9.staticflickr.com/8652/28454261686_b7e5e1bc98_o_d.png" alt=""></p>
+<p>##########################################################</p>
+<p>至此，arch的基本配置就算完成了，秀一下桌面<br><img src="https://farm9.staticflickr.com/8443/28408171781_505273ce85_o_d.jpg" alt=""><br><img src="https://farm9.staticflickr.com/8697/28454263056_8471aaf14e_o_d.jpg" alt=""><br><img src="https://farm9.staticflickr.com/8682/28454262536_a96823a150_h_d.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://farm9.staticflickr.com/8493/28408174511_b96a4f5edc_b_d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;此文章记录我安装arch的过程，安装环境为uefi+gpt，桌面使用gnome3，输入法使用了gnome默认的ibus&lt;/p&gt;
+&lt;p&gt;下面开始安装过程&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="https://coolrc.top/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+    
+      <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
+    
+      <category term="gnome" scheme="https://coolrc.top/tags/gnome/"/>
+    
+      <category term="kde5" scheme="https://coolrc.top/tags/kde5/"/>
+    
+      <category term="plasma5" scheme="https://coolrc.top/tags/plasma5/"/>
+    
+      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows10自动激活失败0xC004F210 0xC004E002</title>
+    <link href="https://coolrc.top/2015/11/29/29110813/"/>
+    <id>https://coolrc.top/2015/11/29/29110813/</id>
+    <published>2015-11-29T03:08:13.000Z</published>
+    <updated>2015-11-29T03:08:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg" alt=""></p>
+<p>在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。</p>
+<p>但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。<br><a id="more"></a><br>于是果断重启大法，然并卵。还是激活失败。。。。</p>
+<p>在google上搜索好久，尝试了很多方法，最后终于被我找到一个办法了，如下：</p>
+<hr>
+<p>  如果你激活失败的话，可以在开始按键上右键，选择    命令提示符（管理员）<br>  依次执行以下代码</p>
+<pre><code class="bash">net stop sppsvc
+cd %windir%\ServiceProfile\LocalService\AppData\Local\Microsoft\WSLicense
+ren tokens.dat tokens.bar
+net start sppsvc
+cscript.exe %windir%\system32\slmgr.vbs /rilc
+</code></pre>
+<p>  完成后重启计算机，你就可以在设置里看到你的计算机已经激活了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。&lt;/p&gt;
+&lt;p&gt;但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="windows" scheme="https://coolrc.top/categories/win/"/>
+    
+    
+      <category term="windows10" scheme="https://coolrc.top/tags/windows10/"/>
+    
+  </entry>
+  
+</feed>
