@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>coolrc&#39;s blog</title>
+  <title>Just4fun</title>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -360,7 +360,7 @@ server {
 <p>但是正是由于这些新特性，博客仅支持新版本浏览器，比如 IE11 以下就是不能访问博客的，如果你的访问者大多使用旧版的浏览器，你需要慎重考虑是否要这样配置。</p>
 <hr>
 <p>参考资料：</p>
-<p><a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a></p>
+<p><a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a><br><a href="https://imququ.com/post/my-nginx-conf.html" target="_blank" rel="external">https://imququ.com/post/my-nginx-conf.html</a><br><a href="https://aotu.io/notes/2016/08/16/nginx-https/" target="_blank" rel="external">https://aotu.io/notes/2016/08/16/nginx-https/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -853,9 +853,9 @@ wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
     </summary>
     
     
-      <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
-    
       <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+    
+      <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
     
       <category term="duoshuo" scheme="https://coolrc.top/tags/duoshuo/"/>
     
@@ -1302,13 +1302,13 @@ chmod +x archibold
     
       <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
     
+      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+    
       <category term="gnome" scheme="https://coolrc.top/tags/gnome/"/>
     
       <category term="kde5" scheme="https://coolrc.top/tags/kde5/"/>
     
       <category term="plasma5" scheme="https://coolrc.top/tags/plasma5/"/>
-    
-      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
     
   </entry>
   
