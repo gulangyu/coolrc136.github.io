@@ -967,9 +967,9 @@ chmod +x install.sh
     </summary>
     
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
-    
       <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
+    
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
     
       <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
     
@@ -1048,9 +1048,9 @@ git pull origin
       <category term="hexo" scheme="https://coolrc.top/categories/hexo/"/>
     
     
-      <category term="git" scheme="https://coolrc.top/tags/git/"/>
-    
       <category term="hexo" scheme="https://coolrc.top/tags/hexo/"/>
+    
+      <category term="git" scheme="https://coolrc.top/tags/git/"/>
     
       <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
     
@@ -1298,17 +1298,17 @@ chmod +x archibold
       <category term="linux" scheme="https://coolrc.top/categories/linux/"/>
     
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
-    
       <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
     
-      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
     
       <category term="gnome" scheme="https://coolrc.top/tags/gnome/"/>
     
       <category term="kde5" scheme="https://coolrc.top/tags/kde5/"/>
     
       <category term="plasma5" scheme="https://coolrc.top/tags/plasma5/"/>
+    
+      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
     
   </entry>
   
