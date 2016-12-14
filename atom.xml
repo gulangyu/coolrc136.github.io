@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://coolrc.top/"/>
+  <link href="https://coolrc.me/"/>
   <updated>2016-11-28T03:57:48.000Z</updated>
-  <id>https://coolrc.top/</id>
+  <id>https://coolrc.me/</id>
   
   <author>
     <name>coolrc</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Arch禁用nvidia独显</title>
-    <link href="https://coolrc.top/2016/11/28/28115748/"/>
-    <id>https://coolrc.top/2016/11/28/28115748/</id>
+    <link href="https://coolrc.me/2016/11/28/28115748/"/>
+    <id>https://coolrc.me/2016/11/28/28115748/</id>
     <published>2016-11-28T03:57:48.000Z</published>
     <updated>2016-11-28T03:57:48.000Z</updated>
     
@@ -53,8 +53,8 @@ sudo echo &quot;blacklist nouveau&quot; &gt;&gt; /etc/modprobe.d/nouveau_blackli
   
   <entry>
     <title>关于独处</title>
-    <link href="https://coolrc.top/2016/11/27/27142109/"/>
-    <id>https://coolrc.top/2016/11/27/27142109/</id>
+    <link href="https://coolrc.me/2016/11/27/27142109/"/>
+    <id>https://coolrc.me/2016/11/27/27142109/</id>
     <published>2016-11-27T06:21:09.000Z</published>
     <updated>2016-11-27T06:21:09.000Z</updated>
     
@@ -82,8 +82,8 @@ sudo echo &quot;blacklist nouveau&quot; &gt;&gt; /etc/modprobe.d/nouveau_blackli
   
   <entry>
     <title>解决konsole无法输入中文的问题</title>
-    <link href="https://coolrc.top/2016/11/24/24063358/"/>
-    <id>https://coolrc.top/2016/11/24/24063358/</id>
+    <link href="https://coolrc.me/2016/11/24/24063358/"/>
+    <id>https://coolrc.me/2016/11/24/24063358/</id>
     <published>2016-11-23T22:33:58.000Z</published>
     <updated>2016-11-23T22:33:58.000Z</updated>
     
@@ -111,14 +111,14 @@ export XI
     </summary>
     
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>nginx反代+http2配置</title>
-    <link href="https://coolrc.top/2016/10/12/12210953/"/>
-    <id>https://coolrc.top/2016/10/12/12210953/</id>
+    <link href="https://coolrc.me/2016/10/12/12210953/"/>
+    <id>https://coolrc.me/2016/10/12/12210953/</id>
     <published>2016-10-12T13:09:53.000Z</published>
     <updated>2016-10-19T15:25:16.000Z</updated>
     
@@ -371,16 +371,16 @@ server {
     </summary>
     
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
-      <category term="nginx" scheme="https://coolrc.top/tags/nginx/"/>
+      <category term="nginx" scheme="https://coolrc.me/tags/nginx/"/>
     
   </entry>
   
   <entry>
     <title>当我有 6 百万时，就发布 Linux 5.0</title>
-    <link href="https://coolrc.top/2016/10/12/1012180646/"/>
-    <id>https://coolrc.top/2016/10/12/1012180646/</id>
+    <link href="https://coolrc.me/2016/10/12/1012180646/"/>
+    <id>https://coolrc.me/2016/10/12/1012180646/</id>
     <published>2016-10-12T10:06:46.000Z</published>
     <updated>2016-10-12T10:06:46.000Z</updated>
     
@@ -403,14 +403,14 @@ server {
     </summary>
     
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>校园网使用ipv6的SS免流</title>
-    <link href="https://coolrc.top/2016/09/18/18231939/"/>
-    <id>https://coolrc.top/2016/09/18/18231939/</id>
+    <link href="https://coolrc.me/2016/09/18/18231939/"/>
+    <id>https://coolrc.me/2016/09/18/18231939/</id>
     <published>2016-09-18T15:19:39.000Z</published>
     <updated>2016-10-12T09:17:26.000Z</updated>
     
@@ -441,14 +441,14 @@ server {
     </summary>
     
     
-      <category term="shadowsocks" scheme="https://coolrc.top/tags/shadowsocks/"/>
+      <category term="shadowsocks" scheme="https://coolrc.me/tags/shadowsocks/"/>
     
   </entry>
   
   <entry>
     <title>在ssh上使用google二次验证</title>
-    <link href="https://coolrc.top/2016/08/03/844120/"/>
-    <id>https://coolrc.top/2016/08/03/844120/</id>
+    <link href="https://coolrc.me/2016/08/03/844120/"/>
+    <id>https://coolrc.me/2016/08/03/844120/</id>
     <published>2016-08-03T08:05:30.000Z</published>
     <updated>2016-08-03T08:05:30.000Z</updated>
     
@@ -488,14 +488,14 @@ sudo cp .libs/pam_google_authenticator.so /lib64/security/
     </summary>
     
     
-      <category term="ssh" scheme="https://coolrc.top/tags/ssh/"/>
+      <category term="ssh" scheme="https://coolrc.me/tags/ssh/"/>
     
   </entry>
   
   <entry>
     <title>小米路由mini破解ssh并刷入breed</title>
-    <link href="https://coolrc.top/2016/07/23/23131543/"/>
-    <id>https://coolrc.top/2016/07/23/23131543/</id>
+    <link href="https://coolrc.me/2016/07/23/23131543/"/>
+    <id>https://coolrc.me/2016/07/23/23131543/</id>
     <published>2016-07-23T05:15:43.000Z</published>
     <updated>2016-07-23T05:15:43.000Z</updated>
     
@@ -610,14 +610,14 @@ wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
     </summary>
     
     
-      <category term="路由" scheme="https://coolrc.top/tags/%E8%B7%AF%E7%94%B1/"/>
+      <category term="路由" scheme="https://coolrc.me/tags/%E8%B7%AF%E7%94%B1/"/>
     
   </entry>
   
   <entry>
     <title>你们搞的这个作文啊，excited！</title>
-    <link href="https://coolrc.top/2016/06/09/09145202/"/>
-    <id>https://coolrc.top/2016/06/09/09145202/</id>
+    <link href="https://coolrc.me/2016/06/09/09145202/"/>
+    <id>https://coolrc.me/2016/06/09/09145202/</id>
     <published>2016-06-09T06:52:02.000Z</published>
     <updated>2016-06-09T06:52:02.000Z</updated>
     
@@ -632,14 +632,14 @@ wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
     </summary>
     
     
-      <category term="蛤" scheme="https://coolrc.top/tags/%E8%9B%A4/"/>
+      <category term="蛤" scheme="https://coolrc.me/tags/%E8%9B%A4/"/>
     
   </entry>
   
   <entry>
     <title>博客大变样</title>
-    <link href="https://coolrc.top/2016/05/30/30131656/"/>
-    <id>https://coolrc.top/2016/05/30/30131656/</id>
+    <link href="https://coolrc.me/2016/05/30/30131656/"/>
+    <id>https://coolrc.me/2016/05/30/30131656/</id>
     <published>2016-05-30T05:16:56.000Z</published>
     <updated>2016-05-30T05:16:56.000Z</updated>
     
@@ -655,14 +655,14 @@ wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
     </summary>
     
     
-      <category term="hexo" scheme="https://coolrc.top/tags/hexo/"/>
+      <category term="hexo" scheme="https://coolrc.me/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>美化多说评论框</title>
-    <link href="https://coolrc.top/2016/02/02/02150921/"/>
-    <id>https://coolrc.top/2016/02/02/02150921/</id>
+    <link href="https://coolrc.me/2016/02/02/02150921/"/>
+    <id>https://coolrc.me/2016/02/02/02150921/</id>
     <published>2016-02-02T07:09:21.000Z</published>
     <updated>2016-04-02T07:09:21.000Z</updated>
     
@@ -853,20 +853,20 @@ wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
     </summary>
     
     
-      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+      <category term="美化" scheme="https://coolrc.me/tags/%E7%BE%8E%E5%8C%96/"/>
     
-      <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
+      <category term="blog" scheme="https://coolrc.me/tags/blog/"/>
     
-      <category term="duoshuo" scheme="https://coolrc.top/tags/duoshuo/"/>
+      <category term="duoshuo" scheme="https://coolrc.me/tags/duoshuo/"/>
     
-      <category term="css" scheme="https://coolrc.top/tags/css/"/>
+      <category term="css" scheme="https://coolrc.me/tags/css/"/>
     
   </entry>
   
   <entry>
     <title>gitignore文件失效原因</title>
-    <link href="https://coolrc.top/2015/12/28/28234118/"/>
-    <id>https://coolrc.top/2015/12/28/28234118/</id>
+    <link href="https://coolrc.me/2015/12/28/28234118/"/>
+    <id>https://coolrc.me/2015/12/28/28234118/</id>
     <published>2015-12-28T15:41:18.000Z</published>
     <updated>2015-12-28T15:41:18.000Z</updated>
     
@@ -892,14 +892,14 @@ wget http://breed.hackpascal.net/breed-mt7620-xiaomi-mini.bin
     </summary>
     
     
-      <category term="git" scheme="https://coolrc.top/tags/git/"/>
+      <category term="git" scheme="https://coolrc.me/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>去除vim自动生成的un~文件</title>
-    <link href="https://coolrc.top/2015/12/13/13121246/"/>
-    <id>https://coolrc.top/2015/12/13/13121246/</id>
+    <link href="https://coolrc.me/2015/12/13/13121246/"/>
+    <id>https://coolrc.me/2015/12/13/13121246/</id>
     <published>2015-12-13T04:12:46.000Z</published>
     <updated>2015-12-13T04:12:46.000Z</updated>
     
@@ -923,19 +923,19 @@ set swapfile
     
     </summary>
     
-      <category term="linux" scheme="https://coolrc.top/categories/linux/"/>
+      <category term="linux" scheme="https://coolrc.me/categories/linux/"/>
     
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
-      <category term="vim" scheme="https://coolrc.top/tags/vim/"/>
+      <category term="vim" scheme="https://coolrc.me/tags/vim/"/>
     
   </entry>
   
   <entry>
     <title>Archlinux自动更换gdm背景</title>
-    <link href="https://coolrc.top/2015/12/12/12162852/"/>
-    <id>https://coolrc.top/2015/12/12/12162852/</id>
+    <link href="https://coolrc.me/2015/12/12/12162852/"/>
+    <id>https://coolrc.me/2015/12/12/12162852/</id>
     <published>2015-12-12T08:28:52.000Z</published>
     <updated>2015-12-12T08:28:52.000Z</updated>
     
@@ -967,18 +967,18 @@ chmod +x install.sh
     </summary>
     
     
-      <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+      <category term="arch" scheme="https://coolrc.me/tags/arch/"/>
     
-      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+      <category term="美化" scheme="https://coolrc.me/tags/%E7%BE%8E%E5%8C%96/"/>
     
   </entry>
   
   <entry>
     <title>删除git历史记录</title>
-    <link href="https://coolrc.top/2015/12/07/1878478/"/>
-    <id>https://coolrc.top/2015/12/07/1878478/</id>
+    <link href="https://coolrc.me/2015/12/07/1878478/"/>
+    <id>https://coolrc.me/2015/12/07/1878478/</id>
     <published>2015-12-07T04:47:16.000Z</published>
     <updated>2015-12-07T04:47:16.000Z</updated>
     
@@ -1008,14 +1008,14 @@ git rebase --onto $(git hash-object -t commit -w tmpfile) master
     </summary>
     
     
-      <category term="git" scheme="https://coolrc.top/tags/git/"/>
+      <category term="git" scheme="https://coolrc.me/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>使用GitHub来管理博客源文件</title>
-    <link href="https://coolrc.top/2015/12/06/06233830/"/>
-    <id>https://coolrc.top/2015/12/06/06233830/</id>
+    <link href="https://coolrc.me/2015/12/06/06233830/"/>
+    <id>https://coolrc.me/2015/12/06/06233830/</id>
     <published>2015-12-06T15:38:30.000Z</published>
     <updated>2015-12-06T15:38:30.000Z</updated>
     
@@ -1045,21 +1045,21 @@ git pull origin
     
     </summary>
     
-      <category term="hexo" scheme="https://coolrc.top/categories/hexo/"/>
+      <category term="hexo" scheme="https://coolrc.me/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://coolrc.top/tags/hexo/"/>
+      <category term="git" scheme="https://coolrc.me/tags/git/"/>
     
-      <category term="git" scheme="https://coolrc.top/tags/git/"/>
+      <category term="hexo" scheme="https://coolrc.me/tags/hexo/"/>
     
-      <category term="blog" scheme="https://coolrc.top/tags/blog/"/>
+      <category term="blog" scheme="https://coolrc.me/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>Achlinux安装教程及美化教程</title>
-    <link href="https://coolrc.top/2015/12/04/04231804/"/>
-    <id>https://coolrc.top/2015/12/04/04231804/</id>
+    <link href="https://coolrc.me/2015/12/04/04231804/"/>
+    <id>https://coolrc.me/2015/12/04/04231804/</id>
     <published>2015-12-04T15:18:04.000Z</published>
     <updated>2016-11-28T03:37:16.000Z</updated>
     
@@ -1295,27 +1295,27 @@ chmod +x archibold
     
     </summary>
     
-      <category term="linux" scheme="https://coolrc.top/categories/linux/"/>
+      <category term="linux" scheme="https://coolrc.me/categories/linux/"/>
     
     
-      <category term="arch" scheme="https://coolrc.top/tags/arch/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
-      <category term="linux" scheme="https://coolrc.top/tags/linux/"/>
+      <category term="arch" scheme="https://coolrc.me/tags/arch/"/>
     
-      <category term="gnome" scheme="https://coolrc.top/tags/gnome/"/>
+      <category term="美化" scheme="https://coolrc.me/tags/%E7%BE%8E%E5%8C%96/"/>
     
-      <category term="kde5" scheme="https://coolrc.top/tags/kde5/"/>
+      <category term="gnome" scheme="https://coolrc.me/tags/gnome/"/>
     
-      <category term="plasma5" scheme="https://coolrc.top/tags/plasma5/"/>
+      <category term="kde5" scheme="https://coolrc.me/tags/kde5/"/>
     
-      <category term="美化" scheme="https://coolrc.top/tags/%E7%BE%8E%E5%8C%96/"/>
+      <category term="plasma5" scheme="https://coolrc.me/tags/plasma5/"/>
     
   </entry>
   
   <entry>
     <title>windows10自动激活失败0xC004F210 0xC004E002</title>
-    <link href="https://coolrc.top/2015/11/29/29110813/"/>
-    <id>https://coolrc.top/2015/11/29/29110813/</id>
+    <link href="https://coolrc.me/2015/11/29/29110813/"/>
+    <id>https://coolrc.me/2015/11/29/29110813/</id>
     <published>2015-11-29T03:08:13.000Z</published>
     <updated>2015-11-29T03:08:13.000Z</updated>
     
@@ -1342,10 +1342,10 @@ cscript.exe %windir%\system32\slmgr.vbs /rilc
     
     </summary>
     
-      <category term="windows" scheme="https://coolrc.top/categories/win/"/>
+      <category term="windows" scheme="https://coolrc.me/categories/win/"/>
     
     
-      <category term="windows10" scheme="https://coolrc.top/tags/windows10/"/>
+      <category term="windows10" scheme="https://coolrc.me/tags/windows10/"/>
     
   </entry>
   
