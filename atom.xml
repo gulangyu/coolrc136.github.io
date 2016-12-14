@@ -1048,9 +1048,9 @@ git pull origin
       <category term="hexo" scheme="https://coolrc.me/categories/hexo/"/>
     
     
-      <category term="git" scheme="https://coolrc.me/tags/git/"/>
-    
       <category term="hexo" scheme="https://coolrc.me/tags/hexo/"/>
+    
+      <category term="git" scheme="https://coolrc.me/tags/git/"/>
     
       <category term="blog" scheme="https://coolrc.me/tags/blog/"/>
     
