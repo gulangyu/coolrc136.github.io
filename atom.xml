@@ -1008,9 +1008,9 @@ chmod +x install.sh
     </summary>
     
     
-      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
-    
       <category term="arch" scheme="https://coolrc.me/tags/arch/"/>
+    
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
       <category term="美化" scheme="https://coolrc.me/tags/%E7%BE%8E%E5%8C%96/"/>
     
@@ -1339,17 +1339,17 @@ chmod +x archibold
       <category term="linux" scheme="https://coolrc.me/categories/linux/"/>
     
     
-      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
-    
       <category term="arch" scheme="https://coolrc.me/tags/arch/"/>
     
-      <category term="美化" scheme="https://coolrc.me/tags/%E7%BE%8E%E5%8C%96/"/>
+      <category term="linux" scheme="https://coolrc.me/tags/linux/"/>
     
       <category term="gnome" scheme="https://coolrc.me/tags/gnome/"/>
     
       <category term="kde5" scheme="https://coolrc.me/tags/kde5/"/>
     
       <category term="plasma5" scheme="https://coolrc.me/tags/plasma5/"/>
+    
+      <category term="美化" scheme="https://coolrc.me/tags/%E7%BE%8E%E5%8C%96/"/>
     
   </entry>
   
