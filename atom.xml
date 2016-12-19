@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://coolrc.me/"/>
-  <updated>2016-12-17T11:54:13.000Z</updated>
+  <updated>2016-12-19T14:12:50.000Z</updated>
   <id>https://coolrc.me/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Pcap_DNSProxy防止DNS劫持</title>
+    <link href="https://coolrc.me/2016/12/19/19221250/"/>
+    <id>https://coolrc.me/2016/12/19/19221250/</id>
+    <published>2016-12-19T14:12:50.000Z</published>
+    <updated>2016-12-19T14:12:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>Pcap_DNSProxyx</code> 项目地址<a href="https://github.com/chengr28/Pcap_DNSProxy" target="_blank" rel="external">https://github.com/chengr28/Pcap_DNSProxy</a></p>
+<p><code>Pcap_DNSProxy</code> 是一个基于 <code>WinPcap/LibPcap</code> 用于过滤 DNS 投毒污染的工具，提供便捷和强大的包含正则表达式的修改 Hosts 的方法，以及对 <code>DNSCurve/DNSCrypt</code> 协议、并行和 TCP 协议请求的支持。<a id="more"></a></p>
+<p>最近校园网搞 DNS 劫持，几乎所有其他 DNS 服务器的 UDP 包都会被抢答甚至直接 drop 掉，只能用自动分配的 DNS。</p>
+<p>于是我在本机用 Pdnsd 搭了一个服务器用 TCP 查询 DNS，然而 windows 上还是没有办法，在 Google 上苦苦搜寻了一整天，终于找到一个神器– <code>Pcap_DNSProxy</code>。</p>
+<p>这个软件可以在 windows 上使用，而且功能很多，支持 TCP 和 自定义规则，正好满足我的需求。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Arch 上安装的话非常容易，直接用 AUR 安装 <code>Pcap-DNSProxyx-git</code> 这个包就行，其他 Linux 发行版可以自行编译。软件的文档里有详细编译教程：<a href="https://github.com/chengr28/Pcap_DNSProxy/blob/master/Documents/ReadMe_Linux.zh-Hans.txt" target="_blank" rel="external">https://github.com/chengr28/Pcap_DNSProxy/blob/master/Documents/ReadMe_Linux.zh-Hans.txt</a></p>
+<p>下载最新的 release 并解压到你想要安装的目录，以管理员身份运行 ServiceControl.bat。<br>输入 1 并回车安装，此时 Windows 系统会询问是否同意程序访问网络，请将 “专用网络” 以及 “公用网络” 都勾上并确认。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>在你的系统的网络选项里将 IPv4 DNS 设为 127.0.0.1，IPv6 DNS 设为 ::1。</p>
+<p>然后按照 <a href="https://github.com/chengr28/Pcap_DNSProxy/blob/master/Documents/ReadMe.zh-Hans.txt" target="_blank" rel="external">https://github.com/chengr28/Pcap_DNSProxy/blob/master/Documents/ReadMe.zh-Hans.txt</a> 的说明进行配置。一般默认配置就可以使用了，但是默认的 Google 8.8.8.8 DNS 丢包比较严重，可以改为其他的国外 DNS。</p>
+<p>这里是我的配置文件：<a href="https://github.com/coolrc136/arch-profile/tree/master/pcap-dnsproxy" target="_blank" rel="external">https://github.com/coolrc136/arch-profile/tree/master/pcap-dnsproxy</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;Pcap_DNSProxyx&lt;/code&gt; 项目地址&lt;a href=&quot;https://github.com/chengr28/Pcap_DNSProxy&quot;&gt;https://github.com/chengr28/Pcap_DNSProxy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Pcap_DNSProxy&lt;/code&gt; 是一个基于 &lt;code&gt;WinPcap/LibPcap&lt;/code&gt; 用于过滤 DNS 投毒污染的工具，提供便捷和强大的包含正则表达式的修改 Hosts 的方法，以及对 &lt;code&gt;DNSCurve/DNSCrypt&lt;/code&gt; 协议、并行和 TCP 协议请求的支持。
+    
+    </summary>
+    
+    
+      <category term="gfw" scheme="https://coolrc.me/tags/gfw/"/>
+    
+  </entry>
   
   <entry>
     <title>答16年12月四级作文题</title>
@@ -1387,43 +1418,6 @@ chmod +x archibold
       <category term="kde5" scheme="https://coolrc.me/tags/kde5/"/>
     
       <category term="plasma5" scheme="https://coolrc.me/tags/plasma5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows10自动激活失败0xC004F210 0xC004E002</title>
-    <link href="https://coolrc.me/2015/11/29/29110813/"/>
-    <id>https://coolrc.me/2015/11/29/29110813/</id>
-    <published>2015-11-29T03:08:13.000Z</published>
-    <updated>2015-11-29T03:08:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg" alt=""></p>
-<p>在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。</p>
-<p>但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。<br><a id="more"></a><br>于是果断重启大法，然并卵。还是激活失败。。。。</p>
-<p>在google上搜索好久，尝试了很多方法，最后终于被我找到一个办法了，如下：</p>
-<hr>
-<p>  如果你激活失败的话，可以在开始按键上右键，选择    命令提示符（管理员）<br>  依次执行以下代码</p>
-<pre><code class="bash">net stop sppsvc
-cd %windir%\ServiceProfile\LocalService\AppData\Local\Microsoft\WSLicense
-ren tokens.dat tokens.bar
-net start sppsvc
-cscript.exe %windir%\system32\slmgr.vbs /rilc
-</code></pre>
-<p>  完成后重启计算机，你就可以在设置里看到你的计算机已经激活了</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://farm9.staticflickr.com/8699/28454267546_61260c6de9_o_d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在最新的windows10中，微软加入了自动激活功能，只要你激活了一次win10，那么以后安装都不用再输入密钥了，系统会在你安装完成后自动激活。即使你格式化整个硬盘也能自动激活。&lt;/p&gt;
-&lt;p&gt;但是当我重新安装进入系统时，却发现并没有自动激活，设置里面显示激活失败，错误代码0xC004F201。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="windows" scheme="https://coolrc.me/categories/win/"/>
-    
-    
-      <category term="windows10" scheme="https://coolrc.me/tags/windows10/"/>
     
   </entry>
   
